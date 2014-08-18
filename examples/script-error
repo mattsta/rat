@@ -1,0 +1,227 @@
+=== REDIS BUG REPORT START: Cut & paste starting from here ===
+[1] 14 Aug 15:49:23.118 #     Redis 2.8.12 crashed by signal: 11
+[1] 14 Aug 15:49:23.118 #     Failed assertion: <no assertion failed> (<no file>:0)
+[1] 14 Aug 15:49:23.118 # --- STACK TRACE
+/usr/bin/redis-server *:6379(logStackTrace+0x33)[0x445883]
+/usr/bin/redis-server *:6379(decrRefCount+0x1)[0x426481]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0x10340)[0x7fba0de79340]
+/usr/bin/redis-server *:6379(decrRefCount+0x1)[0x426481]
+/usr/bin/redis-server *:6379(rewriteClientCommandVector+0xd5)[0x423475]
+/usr/bin/redis-server *:6379(expireGenericCommand+0x14f)[0x428a0f]
+/usr/bin/redis-server *:6379(call+0x83)[0x419473]
+/usr/bin/redis-server *:6379(luaRedisGenericCommand+0x3ea)[0x44957a]
+/usr/bin/redis-server *:6379[0x45ed88]
+/usr/bin/redis-server *:6379[0x467c57]
+/usr/bin/redis-server *:6379[0x45f1cd]
+/usr/bin/redis-server *:6379[0x45e4f8]
+/usr/bin/redis-server *:6379[0x45f33a]
+/usr/bin/redis-server *:6379(lua_pcall+0x4b)[0x45cb9b]
+/usr/bin/redis-server *:6379(evalGenericCommand+0x3ee)[0x44a7ae]
+/usr/bin/redis-server *:6379(call+0x83)[0x419473]
+/usr/bin/redis-server *:6379(processCommand+0x39d)[0x41b63d]
+/usr/bin/redis-server *:6379(processInputBuffer+0x4f)[0x4243ef]
+/usr/bin/redis-server *:6379(readQueryFromClient+0xad)[0x42450d]
+/usr/bin/redis-server *:6379(aeProcessEvents+0x250)[0x414a70]
+/usr/bin/redis-server *:6379(aeMain+0x2b)[0x414cab]
+/usr/bin/redis-server *:6379(main+0x31a)[0x413a9a]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf5)[0x7fba0dac4ec5]
+/usr/bin/redis-server *:6379[0x413b9f]
+[1] 14 Aug 15:49:23.119 # --- INFO OUTPUT
+[1] 14 Aug 15:49:23.119 # # Server
+redis_version:2.8.12
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_build_id:e34bf0c1bde6acf2
+redis_mode:standalone
+os:Linux 3.13.0-32-generic x86_64
+arch_bits:64
+multiplexing_api:epoll
+gcc_version:4.8.2
+process_id:1
+run_id:b0c0090dfa902dfc039366b2a29bf0df548fc227
+tcp_port:6379
+uptime_in_seconds:861
+uptime_in_days:0
+hz:10
+lru_clock:15522435
+config_file:/etc/redis.conf
+
+# Clients
+connected_clients:25
+client_longest_output_list:0
+client_biggest_input_buf:92
+blocked_clients:5
+
+# Memory
+used_memory:1630792
+used_memory_human:1.56M
+used_memory_rss:9859072
+used_memory_peak:1771016
+used_memory_peak_human:1.69M
+used_memory_lua:381952
+mem_fragmentation_ratio:6.05
+mem_allocator:jemalloc-3.6.0
+
+# Persistence
+loading:0
+rdb_changes_since_last_save:5980
+rdb_bgsave_in_progress:0
+rdb_last_save_time:1408030502
+rdb_last_bgsave_status:ok
+rdb_last_bgsave_time_sec:-1
+rdb_current_bgsave_time_sec:-1
+aof_enabled:0
+aof_rewrite_in_progress:0
+aof_rewrite_scheduled:0
+aof_last_rewrite_time_sec:-1
+aof_current_rewrite_time_sec:-1
+aof_last_bgrewrite_status:ok
+aof_last_write_status:ok
+
+# Stats
+total_connections_received:25
+total_commands_processed:14523
+instantaneous_ops_per_sec:120
+rejected_connections:0
+sync_full:0
+sync_partial_ok:0
+sync_partial_err:0
+expired_keys:14
+evicted_keys:0
+keyspace_hits:4664
+keyspace_misses:1562
+pubsub_channels:9
+pubsub_patterns:9
+latest_fork_usec:0
+
+# Replication
+role:master
+connected_slaves:0
+master_repl_offset:0
+repl_backlog_active:0
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:0
+repl_backlog_histlen:0
+
+# CPU
+used_cpu_sys:0.53
+used_cpu_user:0.39
+used_cpu_sys_children:0.00
+used_cpu_user_children:0.00
+
+# Commandstats
+cmdstat_get:calls=280,usec=354,usec_per_call=1.26
+cmdstat_set:calls=307,usec=703,usec_per_call=2.29
+cmdstat_setnx:calls=148,usec=290,usec_per_call=1.96
+cmdstat_setex:calls=31,usec=76,usec_per_call=2.45
+cmdstat_del:calls=328,usec=598,usec_per_call=1.82
+cmdstat_exists:calls=162,usec=363,usec_per_call=2.24
+cmdstat_rpush:calls=266,usec=460,usec_per_call=1.73
+cmdstat_lpush:calls=77,usec=304,usec_per_call=3.95
+cmdstat_brpoplpush:calls=51,usec=152,usec_per_call=2.98
+cmdstat_llen:calls=42,usec=41,usec_per_call=0.98
+cmdstat_lindex:calls=21,usec=34,usec_per_call=1.62
+cmdstat_lrange:calls=57,usec=99,usec_per_call=1.74
+cmdstat_ltrim:calls=32,usec=133,usec_per_call=4.16
+cmdstat_lrem:calls=8,usec=52,usec_per_call=6.50
+cmdstat_sadd:calls=189,usec=505,usec_per_call=2.67
+cmdstat_srem:calls=42,usec=89,usec_per_call=2.12
+cmdstat_smembers:calls=80,usec=383,usec_per_call=4.79
+cmdstat_zadd:calls=80,usec=409,usec_per_call=5.11
+cmdstat_zrem:calls=28,usec=58,usec_per_call=2.07
+cmdstat_zrangebyscore:calls=14,usec=105,usec_per_call=7.50
+cmdstat_hset:calls=530,usec=1119,usec_per_call=2.11
+cmdstat_hget:calls=3520,usec=4466,usec_per_call=1.27
+cmdstat_hincrby:calls=3628,usec=10780,usec_per_call=2.97
+cmdstat_hdel:calls=13,usec=47,usec_per_call=3.62
+cmdstat_hkeys:calls=59,usec=123,usec_per_call=2.08
+cmdstat_hvals:calls=1435,usec=2100,usec_per_call=1.46
+cmdstat_hgetall:calls=308,usec=2395,usec_per_call=7.78
+cmdstat_getset:calls=85,usec=178,usec_per_call=2.09
+cmdstat_select:calls=9,usec=17,usec_per_call=1.89
+cmdstat_expire:calls=244,usec=1029,usec_per_call=4.22
+cmdstat_auth:calls=23,usec=91,usec_per_call=3.96
+cmdstat_multi:calls=100,usec=282,usec_per_call=2.82
+cmdstat_exec:calls=100,usec=1683,usec_per_call=16.83
+cmdstat_flushdb:calls=1,usec=7,usec_per_call=7.00
+cmdstat_info:calls=23,usec=713,usec_per_call=31.00
+cmdstat_subscribe:calls=21,usec=72,usec_per_call=3.43
+cmdstat_unsubscribe:calls=8,usec=28,usec_per_call=3.50
+cmdstat_psubscribe:calls=9,usec=24,usec_per_call=2.67
+cmdstat_publish:calls=136,usec=739,usec_per_call=5.43
+cmdstat_client:calls=23,usec=55,usec_per_call=2.39
+cmdstat_eval:calls=495,usec=34198,usec_per_call=69.09
+cmdstat_evalsha:calls=723,usec=41627,usec_per_call=57.58
+cmdstat_script:calls=787,usec=82756,usec_per_call=105.15
+
+# Keyspace
+db0:keys=228,expires=27,avg_ttl=55951
+hash_init_value: 1408009794
+
+[1] 14 Aug 15:49:23.119 # --- CLIENT LIST OUTPUT
+[1] 14 Aug 15:49:23.119 # id=2 addr=10.74.192.62:33743 fd=7 name= age=861 idle=861 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=3 addr=10.74.192.62:33742 fd=8 name= age=861 idle=861 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+id=4 addr=172.17.0.38:39944 fd=9 name=core.staging-us-west-2-A.i-d20b4cd9.94030:core.staging-eu-west-1-A.i-35900876.ee09d:sub age=860 idle=3 flags=N db=0 sub=0 psub=1 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=psubscribe
+id=5 addr=172.17.0.38:39945 fd=10 name=core.staging-us-west-2-A.i-d20b4cd9.94030:core.staging-eu-west-1-A.i-35900876.ee09d:cmd age=860 idle=859 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+id=6 addr=172.17.42.1:33534 fd=11 name=core.staging-eu-west-1-A.i-35900876.a5d58:core.staging-eu-west-1-A.i-35900876.a5d58:cmd age=852 idle=2 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=exec
+id=7 addr=172.17.42.1:33538 fd=12 name=core.staging-eu-west-1-A.i-35900876.a5d58:core.staging-eu-west-1-A.i-35900876.a5d58:sub age=852 idle=3 flags=N db=0 sub=1 psub=1 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=subscribe
+id=8 addr=172.17.42.1:33561 fd=13 name=core.staging-eu-west-1-A.i-35900876.a5d58:core.staging-eu-west-1-A.i-35900876.a5d58:queue:queue-inbound age=847 idle=847 flags=b db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=brpoplpush
+id=9 addr=172.17.42.1:33563 fd=14 name=core.staging-eu-west-1-A.i-35900876.a5d58:core.staging-eu-west-1-A.i-35900876.a5d58:queue:account-open age=847 idle=15 flags=b db=0 sub=0 psub=0 multi=-1 qbuf=76 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=brpoplpush
+id=10 addr=172.17.42.1:33565 fd=15 name=core.staging-eu-west-1-A.i-35900876.a5d58:core.staging-eu-west-1-A.i-35900876.a5d58:queue:app-open age=847 idle=845 flags=b db=0 sub=0 psub=0 multi=-1 qbuf=67 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=brpoplpush
+id=11 addr=172.17.42.1:33567 fd=16 name=core.staging-eu-west-1-A.i-35900876.a5d58:core.staging-eu-west-1-A.i-35900876.a5d58:queue:channel-open age=847 idle=3 flags=b db=0 sub=0 psub=0 multi=-1 qbuf=76 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=brpoplpush
+id=12 addr=172.17.42.1:33569 fd=17 name=core.staging-eu-west-1-A.i-35900876.a5d58:core.staging-eu-west-1-A.i-35900876.a5d58:queue:channel-site-inbound age=847 idle=3 flags=b db=0 sub=0 psub=0 multi=-1 qbuf=92 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=brpoplpush
+id=13 addr=10.74.192.62:33833 fd=18 name=frontend.staging-eu-west-1-A.i-8e3154ce.57889:core.staging-eu-west-1-A.i-35900876.a5d58:cmd age=847 idle=37 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+id=14 addr=10.74.192.62:33834 fd=19 name=frontend.staging-eu-west-1-A.i-8e3154ce.57889:core.staging-eu-west-1-A.i-35900876.a5d58:sub age=847 idle=37 flags=N db=0 sub=0 psub=1 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+id=15 addr=10.74.192.62:60617 fd=20 name=core.staging-eu-west-1-A.i-8e3154ce.c0f9e:core.staging-eu-west-1-A.i-35900876.a5d58:cmd age=847 idle=1 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=exec
+id=16 addr=10.74.192.62:60618 fd=21 name=core.staging-eu-west-1-A.i-8e3154ce.c0f9e:core.staging-eu-west-1-A.i-35900876.a5d58:sub age=847 idle=14 flags=N db=0 sub=1 psub=1 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=subscribe
+id=17 addr=172.17.0.38:39997 fd=22 name=frontend.staging-us-west-2-A.i-87542e8a.f9f40:core.staging-eu-west-1-A.i-35900876.a5d58:cmd age=846 idle=845 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=script
+id=18 addr=172.17.0.38:39998 fd=23 name=frontend.staging-us-west-2-A.i-87542e8a.f9f40:core.staging-eu-west-1-A.i-35900876.a5d58:sub age=846 idle=846 flags=N db=0 sub=0 psub=1 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=psubscribe
+id=19 addr=172.17.0.38:39999 fd=24 name=core.staging-us-west-2-A.i-87542e8a.18149:core.staging-eu-west-1-A.i-35900876.a5d58:cmd age=846 idle=10 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=exec
+id=20 addr=172.17.0.38:40000 fd=25 name=core.staging-us-west-2-A.i-87542e8a.18149:core.staging-eu-west-1-A.i-35900876.a5d58:sub age=846 idle=14 flags=N db=0 sub=1 psub=1 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=subscribe
+id=21 addr=172.17.0.38:40001 fd=26 name=frontend.staging-us-west-2-A.i-d20b4cd9.3c8ec:core.staging-eu-west-1-A.i-35900876.a5d58:cmd age=846 idle=845 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=script
+id=22 addr=172.17.0.38:40002 fd=27 name=frontend.staging-us-west-2-A.i-d20b4cd9.3c8ec:core.staging-eu-west-1-A.i-35900876.a5d58:sub age=846 idle=846 flags=N db=0 sub=0 psub=1 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=psubscribe
+id=23 addr=172.17.0.38:40003 fd=28 name=core.staging-us-west-2-A.i-d20b4cd9.94030:core.staging-eu-west-1-A.i-35900876.a5d58:sub age=846 idle=2 flags=N db=0 sub=5 psub=1 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=subscribe
+id=24 addr=172.17.0.38:40004 fd=29 name=core.staging-us-west-2-A.i-d20b4cd9.94030:core.staging-eu-west-1-A.i-35900876.a5d58:cmd age=846 idle=1 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=exec
+id=25 addr=172.17.42.1:33649 fd=30 name=frontend.staging-eu-west-1-A.i-35900876.838cb:core.staging-eu-west-1-A.i-35900876.a5d58:cmd age=834 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=evalsha
+id=26 addr=172.17.42.1:33651 fd=31 name=frontend.staging-eu-west-1-A.i-35900876.838cb:core.staging-eu-west-1-A.i-35900876.a5d58:sub age=834 idle=2 flags=N db=0 sub=5 psub=1 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=subscribe
+
+[1] 14 Aug 15:49:23.119 # --- CURRENT CLIENT INFO
+[1] 14 Aug 15:49:23.119 # client: id=25 addr=172.17.42.1:33649 fd=30 name=frontend.staging-eu-west-1-A.i-35900876.838cb:core.staging-eu-west-1-A.i-35900876.a5d58:cmd age=834 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=evalsha
+[1] 14 Aug 15:49:23.119 # argv[0]: 'evalsha'
+[1] 14 Aug 15:49:23.119 # argv[1]: 'bd0744b7e4846c03a7a9f6e7eb0783fa6258a49a'
+[1] 14 Aug 15:49:23.119 # argv[2]: '1'
+[1] 14 Aug 15:49:23.119 # argv[3]: '1b838cb'
+[1] 14 Aug 15:49:23.119 # --- REGISTERS
+[1] 14 Aug 15:49:23.119 # 
+RAX:00007fba0d1ae460 RBX:0000000000000003
+RCX:0000000000000010 RDX:0000000000000020
+RDI:00007fb90d1ae200 RSI:0000000000000002
+RBP:0000000000000018 RSP:00007fff8359a980
+R8 :00007fba0d2c40e8 R9 :00000000fffffff5
+R10:0000000053ecda83 R11:00007fba0dc2a770
+R12:00007fba0d179000 R13:0000000000000002
+R14:00007fba0d1ae0f0 R15:000000000000175b
+RIP:0000000000426481 EFL:0000000000010206
+CSGSFS:0000000000000033
+[1] 14 Aug 15:49:23.119 # (00007fff8359a98f) -> 0000000000000000
+[1] 14 Aug 15:49:23.119 # (00007fff8359a98e) -> 00007fba0d0c9cc0
+[1] 14 Aug 15:49:23.119 # (00007fff8359a98d) -> 00007fba0d1ae2a0
+[1] 14 Aug 15:49:23.119 # (00007fff8359a98c) -> 00007fba0d179000
+[1] 14 Aug 15:49:23.119 # (00007fff8359a98b) -> 00000000fffffff5
+[1] 14 Aug 15:49:23.119 # (00007fff8359a98a) -> 00007fba0d2c40e8
+[1] 14 Aug 15:49:23.119 # (00007fff8359a989) -> 00007fba0d1ae2a0
+[1] 14 Aug 15:49:23.119 # (00007fff8359a988) -> 00007fba0d0c9cc0
+[1] 14 Aug 15:49:23.119 # (00007fff8359a987) -> 00000147d535902e
+[1] 14 Aug 15:49:23.119 # (00007fff8359a986) -> 0000000000000010
+[1] 14 Aug 15:49:23.119 # (00007fff8359a985) -> 00007fff8359a9b0
+[1] 14 Aug 15:49:23.119 # (00007fff8359a984) -> 00007fff8359aa10
+[1] 14 Aug 15:49:23.119 # (00007fff8359a983) -> 0000000000000020
+[1] 14 Aug 15:49:23.119 # (00007fff8359a982) -> 000000000000000c
+[1] 14 Aug 15:49:23.119 # (00007fff8359a981) -> 0000000000423475
+[1] 14 Aug 15:49:23.119 # (00007fff8359a980) -> 0000000000000003
+[1] 14 Aug 15:49:23.119 # --- FAST MEMORY TEST
+[1] 14 Aug 15:49:23.120 # Bio thread for job type #0 terminated
+[1] 14 Aug 15:49:23.120 # Bio thread for job type #1 terminated
+[1] 14 Aug 15:49:23.684 # Fast memory test PASSED, however your memory can still be broken. Please run a memory test for several hours if possible.
+[1] 14 Aug 15:49:23.684 # 
+=== REDIS BUG REPORT END. Make sure to include from START to END. ===

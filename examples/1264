@@ -1,0 +1,31 @@
+=== REDIS BUG REPORT START: Cut & paste starting from here ===
+[375] 29 Aug 00:34:43.801 #     Redis 2.6.15 crashed by signal: 11
+[375] 29 Aug 00:34:43.801 #     Failed assertion: <no assertion failed> (<no file>:0)
+[375] 29 Aug 00:34:43.801 # --- STACK TRACE
+/usr/bin/redis-server(logStackTrace+0x52)[0x43c722]
+/usr/bin/redis-server(decrRefCount+0x1)[0x422ad1]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0xfcb0)[0x7ff31eea0cb0]
+/usr/bin/redis-server(decrRefCount+0x1)[0x422ad1]
+/usr/bin/redis-server(listRelease+0x36)[0x411946]
+/usr/bin/redis-server(decrRefCount+0x85)[0x422b55]
+/usr/bin/redis-server(_dictClear+0x74)[0x414134]
+/usr/bin/redis-server(dictEmpty+0xd)[0x41473d]
+/usr/bin/redis-server(emptyDb+0x34)[0x4239b4]
+/usr/bin/redis-server(readSyncBulkPayload+0x15f)[0x42578f]
+/usr/bin/redis-server(aeProcessEvents+0x145)[0x412595]
+/usr/bin/redis-server(aeMain+0x2b)[0x41286b]
+/usr/bin/redis-server(main+0x2a3)[0x4116a3]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xed)[0x7ff31eaf376d]
+/usr/bin/redis-server[0x4117f9]
+[375] 29 Aug 00:34:43.801 # --- INFO OUTPUT
+[375] 29 Aug 00:34:43.801 # # Server
+redis_version:2.6.15
+redis_git_sha1:00000000
+redis_git_dirty:0
+[375] 29 Aug 00:34:43.801 # (00007fffed7bcea0) -> 00007ff31e01a1a0
+[375] 29 Aug 00:34:43.801 # (00007fffed7bce98) -> 00007ff1d57adfe0
+[375] 29 Aug 00:34:43.801 # (00007fffed7bce90) -> 00007ff31e01a1a0
+[375] 29 Aug 00:34:43.801 # (00007fffed7bce88) -> 0000000000411946
+[375] 29 Aug 00:34:43.801 # (00007fffed7bce80) -> 00007ff1d57b3c40
+[375] 29 Aug 00:34:43.801 #
+=== REDIS BUG REPORT END. Make sure to include from START to END. ===

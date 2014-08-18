@@ -1,0 +1,141 @@
+=== REDIS BUG REPORT START: Cut & paste starting from here ===
+[1671] 11 Jun 09:49:54.217 # ------------------------------------------------
+[1671] 11 Jun 09:49:54.217 # !!! Software Failure. Press left mouse button to continue
+[1671] 11 Jun 09:49:54.217 # Guru Meditation: "Unknown object type" #rdb.c:1028
+[1671] 11 Jun 09:49:54.217 # (forcing SIGSEGV in order to print the stack trace)
+[1671] 11 Jun 09:49:54.217 # ------------------------------------------------
+[1671] 11 Jun 09:49:54.217 #     Redis 2.6.7 crashed by signal: 11
+[1671] 11 Jun 09:49:54.217 #     Failed assertion: <no assertion failed> (<no file>:0)
+[1671] 11 Jun 09:49:54.217 # --- STACK TRACE
+/usr/bin/redis-server(logStackTrace+0x75)[0x440305]
+/usr/bin/redis-server(_redisPanic+0x7f)[0x44010f]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0xfcb0)[0x7fd3c305ccb0]
+/usr/bin/redis-server(_redisPanic+0x7f)[0x44010f]
+/usr/bin/redis-server(rdbLoadObject+0x80d)[0x42dc3d]
+/usr/bin/redis-server(rdbLoad+0x1bc)[0x42de4c]
+/usr/bin/redis-server(loadDataFromDisk+0x1e)[0x41d0ae]
+/usr/bin/redis-server(main+0x39b)[0x41dcfb]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xed)[0x7fd3c2cb176d]
+/usr/bin/redis-server[0x416c59]
+[1671] 11 Jun 09:49:54.218 # --- INFO OUTPUT
+[1671] 11 Jun 09:49:54.218 # # Server
+redis_version:2.6.7
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_mode:standalone
+os:Linux 3.2.0-31-virtual x86_64
+arch_bits:64
+multiplexing_api:epoll
+gcc_version:4.4.5
+process_id:1671
+run_id:d252f730a27157a321d61e977bf35b2b725f0309
+tcp_port:6379
+uptime_in_seconds:0
+uptime_in_days:0
+lru_clock:0
+
+# Clients
+connected_clients:0
+client_longest_output_list:0
+client_biggest_input_buf:0
+blocked_clients:0
+
+# Memory
+used_memory:513632
+used_memory_human:501.59K
+used_memory_rss:2072576
+used_memory_peak:472704
+used_memory_peak_human:461.62K
+used_memory_lua:31744
+mem_fragmentation_ratio:4.04
+mem_allocator:jemalloc-3.2.0
+
+# Persistence
+loading:1
+rdb_changes_since_last_save:0
+rdb_bgsave_in_progress:0
+rdb_last_save_time:1370944194
+rdb_last_bgsave_status:ok
+rdb_last_bgsave_time_sec:-1
+rdb_current_bgsave_time_sec:-1
+aof_enabled:0
+aof_rewrite_in_progress:0
+aof_rewrite_scheduled:0
+aof_last_rewrite_time_sec:-1
+aof_current_rewrite_time_sec:-1
+aof_last_bgrewrite_status:ok
+loading_start_time:1370944194
+loading_total_bytes:1721462812
+loading_loaded_bytes:9
+loading_loaded_perc:0.00
+loading_eta_seconds:1
+
+# Stats
+total_connections_received:0
+total_commands_processed:0
+instantaneous_ops_per_sec:0
+rejected_connections:0
+expired_keys:0
+evicted_keys:0
+keyspace_hits:0
+keyspace_misses:0
+pubsub_channels:0
+pubsub_patterns:0
+latest_fork_usec:0
+
+# Replication
+role:slave
+master_host:10.34.153.119
+master_port:6379
+master_link_status:down
+master_last_io_seconds_ago:-1
+master_sync_in_progress:0
+master_link_down_since_seconds:0
+slave_priority:100
+slave_read_only:1
+connected_slaves:0
+
+# CPU
+used_cpu_sys:0.00
+used_cpu_user:0.00
+used_cpu_sys_children:0.00
+used_cpu_user_children:0.00
+
+# Commandstats
+
+# Keyspace
+db0:keys=143,expires=2
+hash_init_value: 1370866657
+
+[1671] 11 Jun 09:49:54.218 # --- CLIENT LIST OUTPUT
+[1671] 11 Jun 09:49:54.218 # 
+[1671] 11 Jun 09:49:54.218 # --- REGISTERS
+[1671] 11 Jun 09:49:54.218 # 
+RAX:0000000000000000 RBX:00000000004991ac
+RCX:00007fd3c3046778 RDX:00007fd3c3046770
+RDI:0000000000000000 RSI:0000000000000001
+RBP:0000000000499fb1 RSP:00007fff80bb9810
+R8 :00007fd3c3046770 R9 :0000000000000000
+R10:00000000ffffffff R11:0000000000000206
+R12:0000000000000404 R13:0000000000000091
+R14:00007fd3c24c8a30 R15:ffffffffffffffff
+RIP:000000000044010f EFL:0000000000010202
+CSGSFS:000000000000e033
+[1671] 11 Jun 09:49:54.218 # (00007fff80bb9888) -> 00007fd3c24c8a30
+[1671] 11 Jun 09:49:54.218 # (00007fff80bb9880) -> 0000000000000091
+[1671] 11 Jun 09:49:54.218 # (00007fff80bb9878) -> 0000013f32a446a9
+[1671] 11 Jun 09:49:54.218 # (00007fff80bb9870) -> 00007fd3c250a300
+[1671] 11 Jun 09:49:54.219 # (00007fff80bb9868) -> 00007fff80bb9cc0
+[1671] 11 Jun 09:49:54.219 # (00007fff80bb9860) -> 00007fff80bb9cc0
+[1671] 11 Jun 09:49:54.219 # (00007fff80bb9858) -> 000000000042d2c2
+[1671] 11 Jun 09:49:54.219 # (00007fff80bb9850) -> 00007fff80bb9cc0
+[1671] 11 Jun 09:49:54.219 # (00007fff80bb9848) -> 000000000000002f
+[1671] 11 Jun 09:49:54.219 # (00007fff80bb9840) -> 000000000000002f
+[1671] 11 Jun 09:49:54.219 # (00007fff80bb9838) -> 0000000000428688
+[1671] 11 Jun 09:49:54.219 # (00007fff80bb9830) -> 00007fd3c24141c8
+[1671] 11 Jun 09:49:54.219 # (00007fff80bb9828) -> 000000000042dc3d
+[1671] 11 Jun 09:49:54.219 # (00007fff80bb9820) -> 00007fff80bb9cc0
+[1671] 11 Jun 09:49:54.219 # (00007fff80bb9818) -> 0000000000000073
+[1671] 11 Jun 09:49:54.219 # (00007fff80bb9810) -> 00007fff80bb9cc0
+[1671] 11 Jun 09:49:54.219 # 
+=== REDIS BUG REPORT END. Make sure to include from START to END. ===

@@ -1,0 +1,153 @@
+=== REDIS BUG REPORT START: Cut & paste starting from here ===
+[3079] 21 Jul 15:38:22.729 # ------------------------------------------------
+[3079] 21 Jul 15:38:22.729 # !!! Software Failure. Press left mouse button to continue
+[3079] 21 Jul 15:38:22.729 # Guru Meditation: "Redis aborting for OUT OF MEMORY" #redis.c:2627
+[3079] 21 Jul 15:38:22.729 # (forcing SIGSEGV in order to print the stack trace)
+[3079] 21 Jul 15:38:22.729 # ------------------------------------------------
+[3079] 21 Jul 15:38:22.729 #     Redis 2.6.14 crashed by signal: 11
+[3079] 21 Jul 15:38:22.729 #     Failed assertion: <no assertion failed> (<no file>:0)
+[3079] 21 Jul 15:38:22.729 # --- STACK TRACE
+redis-server(logStackTrace+0x71)[0x8087551]
+redis-server(_redisPanic+0x84)[0x8086394]
+[0x56140c]
+redis-server(_redisPanic+0x84)[0x8086394]
+redis-server(redisOutOfMemoryHandler+0x3b)[0x805c37b]
+redis-server(zrealloc+0xe1)[0x8062711]
+redis-server(sdsMakeRoomFor+0x41)[0x80614e1]
+redis-server(processMultibulkBuffer+0x2a2)[0x8068582]
+redis-server(processInputBuffer+0x7a)[0x80688ca]
+redis-server(readQueryFromClient+0x9d)[0x80689ad]
+redis-server(aeProcessEvents+0x140)[0x8059b60]
+redis-server(aeMain+0x2c)[0x8059ebc]
+redis-server(main+0x2c5)[0x8058ce5]
+/lib/i386-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x2df113]
+redis-server[0x8058e81]
+[3079] 21 Jul 15:38:22.817 # --- INFO OUTPUT
+[3079] 21 Jul 15:38:22.817 # # Server
+redis_version:2.6.14
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_mode:standalone
+os:Linux 3.0.0-12-generic i686
+arch_bits:32
+multiplexing_api:epoll
+gcc_version:4.6.1
+process_id:3079
+run_id:7c65058a9cda62c6188a21cd2e5aea9d75ec28f1
+tcp_port:6379
+uptime_in_seconds:127
+uptime_in_days:0
+hz:10
+lru_clock:1124350
+
+# Clients
+connected_clients:5
+client_longest_output_list:0
+client_biggest_input_buf:180188
+blocked_clients:0
+
+# Memory
+used_memory:3018265264
+used_memory_human:2.81G
+used_memory_rss:1519943680
+used_memory_peak:2993776752
+used_memory_peak_human:2.79G
+used_memory_lua:21504
+mem_fragmentation_ratio:0.50
+mem_allocator:jemalloc-3.2.0
+
+# Persistence
+loading:0
+rdb_changes_since_last_save:53512
+rdb_bgsave_in_progress:0
+rdb_last_save_time:1374392175
+rdb_last_bgsave_status:ok
+rdb_last_bgsave_time_sec:-1
+rdb_current_bgsave_time_sec:-1
+aof_enabled:0
+aof_rewrite_in_progress:0
+aof_rewrite_scheduled:0
+aof_last_rewrite_time_sec:-1
+aof_current_rewrite_time_sec:-1
+aof_last_bgrewrite_status:ok
+
+# Stats
+total_connections_received:85
+total_commands_processed:116220
+instantaneous_ops_per_sec:8042
+rejected_connections:0
+expired_keys:0
+evicted_keys:0
+keyspace_hits:16710
+keyspace_misses:0
+pubsub_channels:0
+pubsub_patterns:0
+latest_fork_usec:0
+
+# Replication
+role:master
+connected_slaves:0
+
+# CPU
+used_cpu_sys:37.08
+used_cpu_user:1.87
+used_cpu_sys_children:0.00
+used_cpu_user_children:0.00
+
+# Commandstats
+cmdstat_get:calls=16000,usec=93805,usec_per_call=5.86
+cmdstat_set:calls=16000,usec=106330,usec_per_call=6.65
+cmdstat_incr:calls=16000,usec=49820,usec_per_call=3.11
+cmdstat_lpush:calls=14510,usec=78709,usec_per_call=5.42
+cmdstat_lpop:calls=7000,usec=44878,usec_per_call=6.41
+cmdstat_lrange:calls=710,usec=115497,usec_per_call=162.67
+cmdstat_sadd:calls=7000,usec=19157,usec_per_call=2.74
+cmdstat_srem:calls=1,usec=17,usec_per_call=17.00
+cmdstat_spop:calls=6999,usec=17377,usec_per_call=2.48
+cmdstat_ping:calls=32000,usec=79286,usec_per_call=2.48
+
+# Keyspace
+db0:keys=3,expires=0
+hash_init_value: 1373652776
+
+[3079] 21 Jul 15:38:22.817 # --- CLIENT LIST OUTPUT
+[3079] 21 Jul 15:38:22.818 # addr=127.0.0.1:33756 fd=5 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=lpush
+addr=127.0.0.1:33757 fd=6 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=180188 qbuf-free=219816 obl=0 oll=0 omem=0 events=r cmd=lpush
+addr=127.0.0.1:33758 fd=7 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=65500 qbuf-free=334504 obl=0 oll=0 omem=0 events=r cmd=lpush
+addr=127.0.0.1:33759 fd=8 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=400004 obl=0 oll=0 omem=0 events=r cmd=lpush
+addr=127.0.0.1:33760 fd=9 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=400004 obl=7 oll=0 omem=0 events=rw cmd=lpush
+
+[3079] 21 Jul 15:38:22.818 # --- CURRENT CLIENT INFO
+[3079] 21 Jul 15:38:22.818 # client: addr=127.0.0.1:33756 fd=5 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=lpush
+[3079] 21 Jul 15:38:22.818 # argv[0]: 'LPUSH'
+[3079] 21 Jul 15:38:22.818 # argv[1]: 'mylist'
+[3079] 21 Jul 15:38:22.821 # argv[2]: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+[3079] 21 Jul 15:38:22.822 # key 'mylist' found in DB containing the following object:
+[3079] 21 Jul 15:38:22.822 # Object type: 1
+[3079] 21 Jul 15:38:22.822 # Object encoding: 4
+[3079] 21 Jul 15:38:22.822 # Object refcount: 1
+[3079] 21 Jul 15:38:22.822 # List length: 7510
+[3079] 21 Jul 15:38:22.822 # --- REGISTERS
+[3079] 21 Jul 15:38:22.822 # 
+EAX:00000000 EBX:00000000 ECX:0043f398 EDX:00000000
+EDI:00000010 ESI:00061a8d EBP:00000003 ESP:bfa9d9a0
+SS :0000007b EFL:bfa9d9a0 EIP:08086394 CS:00000073
+DS :0000007b ES :ffff007b FS :c1520000 GS:00000033
+[3079] 21 Jul 15:38:22.822 # (bfa9d9dc) -> b704bf40
+[3079] 21 Jul 15:38:22.822 # (bfa9d9d8) -> 00000a43
+[3079] 21 Jul 15:38:22.822 # (bfa9d9d4) -> 080e9980
+[3079] 21 Jul 15:38:22.822 # (bfa9d9d0) -> 080e122c
+[3079] 21 Jul 15:38:22.822 # (bfa9d9cc) -> 0805c37b
+[3079] 21 Jul 15:38:22.822 # (bfa9d9c8) -> 00061a8d
+[3079] 21 Jul 15:38:22.822 # (bfa9d9c4) -> 00000000
+[3079] 21 Jul 15:38:22.822 # (bfa9d9c0) -> b704bf40
+[3079] 21 Jul 15:38:22.822 # (bfa9d9bc) -> 19a44900
+[3079] 21 Jul 15:38:22.822 # (bfa9d9b8) -> 00000003
+[3079] 21 Jul 15:38:22.822 # (bfa9d9b4) -> 080eafd8
+[3079] 21 Jul 15:38:22.822 # (bfa9d9b0) -> 00000a43
+[3079] 21 Jul 15:38:22.822 # (bfa9d9ac) -> 080e9980
+[3079] 21 Jul 15:38:22.822 # (bfa9d9a8) -> 080e122c
+[3079] 21 Jul 15:38:22.822 # (bfa9d9a4) -> 080e6aa0
+[3079] 21 Jul 15:38:22.822 # (bfa9d9a0) -> 00000003
+[3079] 21 Jul 15:38:22.822 # 
+=== REDIS BUG REPORT END. Make sure to include from START to END. ===

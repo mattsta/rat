@@ -1,0 +1,330 @@
+=== REDIS BUG REPORT START: Cut & paste starting from here ===
+[24567] 06 Oct 18:26:45.098 #     Redis 2.6.16 crashed by signal: 11
+[24567] 06 Oct 18:26:45.098 #     Failed assertion: <no assertion failed> (<no file>:0)
+[24567] 06 Oct 18:26:45.098 # --- STACK TRACE
+/usr/local/bin/redis-server(logStackTrace+0x75)[0x4421f5]
+/usr/local/bin/redis-server(dictFind+0xa4)[0x419704]
+/lib/libpthread.so.0(+0xf8f0)[0x7f5425e2a8f0]
+/usr/local/bin/redis-server(dictFind+0xa4)[0x419704]
+/usr/local/bin/redis-server(lookupKey+0x10)[0x429ef0]
+/usr/local/bin/redis-server(lookupKeyRead+0x24)[0x42a4d4]
+/usr/local/bin/redis-server(lookupKeyReadOrReply+0x1d)[0x42a51d]
+/usr/local/bin/redis-server(getGenericCommand+0x18)[0x42fc48]
+/usr/local/bin/redis-server(call+0x5b)[0x41be3b]
+/usr/local/bin/redis-server(processCommand+0x30d)[0x41c2ed]
+/usr/local/bin/redis-server(processInputBuffer+0x4f)[0x42725f]
+/usr/local/bin/redis-server(readQueryFromClient+0xa3)[0x427373]
+/usr/local/bin/redis-server(aeProcessEvents+0x13c)[0x4178fc]
+/usr/local/bin/redis-server(aeMain+0x2b)[0x417bbb]
+/usr/local/bin/redis-server(main+0x23f)[0x41ef8f]
+/lib/libc.so.6(__libc_start_main+0xfd)[0x7f5425ab3c4d]
+/usr/local/bin/redis-server[0x416f89]
+[24567] 06 Oct 18:26:45.117 # --- INFO OUTPUT
+[24567] 06 Oct 18:26:45.117 # # Server
+redis_version:2.6.16
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_mode:standalone
+os:Linux 2.6.32-23-server x86_64
+arch_bits:64
+multiplexing_api:epoll
+gcc_version:4.4.3
+process_id:24567
+run_id:4522256abe59b8a429cfe00de8a4732ef0320672
+tcp_port:6379
+uptime_in_seconds:543802
+uptime_in_days:6
+hz:10
+lru_clock:1792800
+
+# Clients
+connected_clients:153
+client_longest_output_list:0
+client_biggest_input_buf:0
+blocked_clients:1
+
+# Memory
+used_memory:1693700744
+used_memory_human:1.58G
+used_memory_rss:1981816832
+used_memory_peak:1946153504
+used_memory_peak_human:1.81G
+used_memory_lua:31744
+mem_fragmentation_ratio:1.17
+mem_allocator:jemalloc-3.2.0
+
+# Persistence
+loading:0
+rdb_changes_since_last_save:180728
+rdb_bgsave_in_progress:0
+rdb_last_save_time:1381075538
+rdb_last_bgsave_status:ok
+rdb_last_bgsave_time_sec:27
+rdb_current_bgsave_time_sec:-1
+aof_enabled:0
+aof_rewrite_in_progress:0
+aof_rewrite_scheduled:0
+aof_last_rewrite_time_sec:-1
+aof_current_rewrite_time_sec:-1
+aof_last_bgrewrite_status:ok
+
+# Stats
+total_connections_received:7178129
+total_commands_processed:391477398
+instantaneous_ops_per_sec:914
+rejected_connections:0
+expired_keys:49066174
+evicted_keys:0
+keyspace_hits:254387401
+keyspace_misses:53036727
+pubsub_channels:2
+pubsub_patterns:0
+latest_fork_usec:54444
+
+# Replication
+role:master
+connected_slaves:0
+
+# CPU
+used_cpu_sys:6820.58
+used_cpu_user:12026.63
+used_cpu_sys_children:1193.36
+used_cpu_user_children:6145.93
+
+# Commandstats
+cmdstat_get:calls=303929211,usec=1099381514,usec_per_call=3.62
+cmdstat_set:calls=2009,usec=6461,usec_per_call=3.22
+cmdstat_setnx:calls=98613,usec=324980,usec_per_call=3.30
+cmdstat_setex:calls=64735955,usec=422402695,usec_per_call=6.53
+cmdstat_del:calls=64676,usec=6469792,usec_per_call=100.03
+cmdstat_exists:calls=5261656,usec=11869380,usec_per_call=2.26
+cmdstat_mget:calls=1929550,usec=6344873,usec_per_call=3.29
+cmdstat_lpush:calls=18968,usec=132972,usec_per_call=7.01
+cmdstat_rpop:calls=126,usec=958,usec_per_call=7.60
+cmdstat_brpop:calls=284214,usec=1833667,usec_per_call=6.45
+cmdstat_llen:calls=6008,usec=2044,usec_per_call=0.34
+cmdstat_sadd:calls=583851,usec=1846296,usec_per_call=3.16
+cmdstat_srem:calls=889149,usec=9744642,usec_per_call=10.96
+cmdstat_scard:calls=17769,usec=77699,usec_per_call=4.37
+cmdstat_spop:calls=1,usec=4,usec_per_call=4.00
+cmdstat_smembers:calls=18968,usec=267092,usec_per_call=14.08
+cmdstat_zadd:calls=18221,usec=243244,usec_per_call=13.35
+cmdstat_zincrby:calls=6872508,usec=184965910,usec_per_call=26.91
+cmdstat_zrem:calls=18221,usec=103142,usec_per_call=5.66
+cmdstat_zunionstore:calls=10336,usec=5690525581,usec_per_call=550553.94
+cmdstat_zrevrangebyscore:calls=10074,usec=62003,usec_per_call=6.15
+cmdstat_zrevrange:calls=1488030,usec=141777336,usec_per_call=95.28
+cmdstat_hset:calls=18221,usec=64764,usec_per_call=3.55
+cmdstat_hdel:calls=18221,usec=79240,usec_per_call=4.35
+cmdstat_incrby:calls=440059,usec=1749093,usec_per_call=3.97
+cmdstat_select:calls=51139,usec=138244,usec_per_call=2.70
+cmdstat_expire:calls=20500,usec=102930,usec_per_call=5.02
+cmdstat_expireat:calls=4016,usec=12543,usec_per_call=3.12
+cmdstat_keys:calls=10336,usec=839990,usec_per_call=81.27
+cmdstat_multi:calls=1013541,usec=1081148,usec_per_call=1.07
+cmdstat_exec:calls=1013541,usec=1273406,usec_per_call=1.26
+cmdstat_info:calls=18195,usec=3890157,usec_per_call=213.80
+cmdstat_ttl:calls=2310438,usec=6796765,usec_per_call=2.94
+cmdstat_config:calls=18123,usec=225266,usec_per_call=12.43
+cmdstat_subscribe:calls=3,usec=68,usec_per_call=22.67
+cmdstat_publish:calls=262803,usec=1495847,usec_per_call=5.69
+cmdstat_watch:calls=10074,usec=26908,usec_per_call=2.67
+cmdstat_unwatch:calls=10074,usec=11775,usec_per_call=1.17
+
+# Keyspace
+db0:keys=19546,expires=19546,avg_ttl=2559034180
+db1:keys=773208,expires=773208,avg_ttl=29234735
+db2:keys=62,expires=61,avg_ttl=35687771
+db3:keys=3,expires=0,avg_ttl=0
+db10:keys=25,expires=25,avg_ttl=699503461
+hash_init_value: 1380676359
+
+[24567] 06 Oct 18:26:45.117 # --- CLIENT LIST OUTPUT
+[24567] 06 Oct 18:26:45.119 # addr=127.0.0.1:34790 fd=200 name= age=535973 idle=17 flags=N db=3 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=publish
+addr=/tmp/redis.sock:0 fd=97 name= age=15 idle=15 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=28 name= age=15 idle=15 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=101 name= age=17921 idle=42 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zincrby
+addr=/tmp/redis.sock:0 fd=89 name= age=891 idle=8 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=84 name= age=6 idle=6 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=16 name= age=870 idle=161 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=31 name= age=1 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=91 name= age=1030 idle=57 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=139 name= age=19 idle=2 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=8 name= age=15 idle=15 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=163 name= age=87 idle=19 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=142 name= age=50 idle=49 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=153 name= age=103 idle=103 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=48 name= age=5 idle=5 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=127.0.0.1:51804 fd=69 name= age=521073 idle=27 flags=N db=3 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=lpush
+addr=/tmp/redis.sock:0 fd=154 name= age=684 idle=300 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zincrby
+addr=/tmp/redis.sock:0 fd=80 name= age=2 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=114 name= age=4144 idle=6 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=68 name= age=900 idle=9 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=95 name= age=2 idle=2 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=10 name= age=300 idle=4 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zincrby
+addr=/tmp/redis.sock:0 fd=123 name= age=673 idle=1 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zincrby
+addr=/tmp/redis.sock:0 fd=128 name= age=537 idle=0 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=185172 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=21 name= age=4 idle=4 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=129 name= age=537 idle=0 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=45 name= age=2 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=29 name= age=21786 idle=11 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zincrby
+addr=/tmp/redis.sock:0 fd=130 name= age=1977 idle=2 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=160 name= age=701 idle=22 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=103 name= age=10 idle=7 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=122 name= age=3 idle=2 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=32 name= age=12 idle=11 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=63 name= age=4 idle=3 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=117 name= age=4 idle=3 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=64 name= age=39 idle=38 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=33 name= age=14023 idle=48 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zrevrange
+addr=/tmp/redis.sock:0 fd=152 name= age=2861 idle=2 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=37 name= age=6 idle=4 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=42 name= age=621 idle=3 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zrevrange
+addr=/tmp/redis.sock:0 fd=39 name= age=755 idle=26 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=41 name= age=870 idle=1 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=185162 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=136 name= age=46 idle=46 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=141 name= age=162 idle=57 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=127 name= age=7066 idle=11 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=132 name= age=1 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=134 name= age=1 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=88 name= age=2317 idle=242 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=44 name= age=41 idle=40 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=145 name= age=1 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=61 name= age=41 idle=40 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=133 name= age=80 idle=80 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=111 name= age=269 idle=268 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=11 name= age=892 idle=7 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=56 name= age=3 idle=2 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=13 name= age=6 idle=6 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=25 name= age=1002 idle=96 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:53706 fd=66 name= age=183293 idle=3 flags=N db=3 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=publish
+addr=/tmp/redis.sock:0 fd=126 name= age=17955 idle=5 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zrevrange
+addr=/tmp/redis.sock:0 fd=72 name= age=7 idle=3 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=20 name= age=1 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=124 name= age=1029 idle=9 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=75 name= age=487 idle=0 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=100 name= age=696 idle=1 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=54 name= age=2 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=67 name= age=2 idle=2 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=85 name= age=2 idle=2 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:36759 fd=237 name= age=539838 idle=6 flags=N db=3 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=subscribe
+addr=/tmp/redis.sock:0 fd=70 name= age=668 idle=2 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zrevrange
+addr=/tmp/redis.sock:0 fd=78 name= age=52 idle=52 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zrevrange
+addr=/tmp/redis.sock:0 fd=62 name= age=2 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=107 name= age=4 idle=3 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=74 name= age=7 idle=6 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=7 name= age=5 idle=5 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=108 name= age=2576 idle=4 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=55 name= age=28 idle=27 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=18 name= age=43047 idle=2 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zrevrange
+addr=/tmp/redis.sock:0 fd=22 name= age=2 idle=2 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=50 name= age=42 idle=42 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=131 name= age=9 idle=9 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=47 name= age=43 idle=43 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=53 name= age=40667 idle=55 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zincrby
+addr=/tmp/redis.sock:0 fd=125 name= age=3 idle=3 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=118 name= age=1036 idle=1 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zrevrange
+addr=/tmp/redis.sock:0 fd=26 name= age=5 idle=5 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=115 name= age=4 idle=3 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=49 name= age=43 idle=43 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=71 name= age=3 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=119 name= age=3 idle=3 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=99 name= age=10 idle=7 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=102 name= age=10 idle=6 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=113 name= age=722 idle=1 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=77 name= age=662 idle=7 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zrevrange
+addr=/tmp/redis.sock:0 fd=110 name= age=15 idle=14 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=6 name= age=102 idle=3 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=170 name= age=712 idle=1 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=120 name= age=1 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=140 name= age=1 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=143 name= age=1 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=144 name= age=1 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=83 name= age=1 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=147 name= age=558 idle=3 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=14 name= age=6 idle=5 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=73 name= age=678 idle=1 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=185178 obl=0 oll=0 omem=0 events=r cmd=incrby
+addr=/tmp/redis.sock:0 fd=93 name= age=1002 idle=0 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=185178 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=30 name= age=918 idle=25 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=156 name= age=602 idle=4 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zincrby
+addr=/tmp/redis.sock:0 fd=35 name= age=1 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=9 name= age=911 idle=1 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=185178 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=76 name= age=11 idle=7 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=109 name= age=53 idle=53 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=24 name= age=755 idle=1 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=185172 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=138 name= age=1002 idle=8 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=87 name= age=962 idle=5 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=106 name= age=85 idle=85 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=105 name= age=2 idle=2 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=112 name= age=2 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=79 name= age=1000 idle=3 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=mget
+addr=/tmp/redis.sock:0 fd=60 name= age=1030 idle=1 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=184978 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=92 name= age=1029 idle=208 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zincrby
+addr=/tmp/redis.sock:0 fd=58 name= age=911 idle=16 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=98 name= age=2 idle=2 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=104 name= age=2 idle=2 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=12 name= age=1015 idle=57 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=90 name= age=21646 idle=4 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zincrby
+addr=127.0.0.1:34794 fd=196 name= age=535973 idle=1 flags=b db=3 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=brpop
+addr=/tmp/redis.sock:0 fd=34 name= age=4 idle=3 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=52 name= age=4 idle=3 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=27 name= age=7 idle=6 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=127.0.0.1:34795 fd=214 name= age=535973 idle=3 flags=N db=3 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=subscribe
+addr=/tmp/redis.sock:0 fd=86 name= age=1050 idle=1 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=15 name= age=5 idle=4 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=59 name= age=9 idle=6 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=81 name= age=9 idle=8 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=82 name= age=37 idle=37 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=121 name= age=3 idle=3 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=19 name= age=4 idle=4 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=96 name= age=1050 idle=14 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=36 name= age=879 idle=1 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=51 name= age=9 idle=6 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=40 name= age=910 idle=19 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=94 name= age=910 idle=1 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zincrby
+addr=/tmp/redis.sock:0 fd=17 name= age=186 idle=161 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zincrby
+addr=/tmp/redis.sock:0 fd=38 name= age=73 idle=72 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=116 name= age=3151 idle=62 flags=U db=2 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zincrby
+addr=/tmp/redis.sock:0 fd=23 name= age=6 idle=5 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=46 name= age=4707 idle=3 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=/tmp/redis.sock:0 fd=43 name= age=242 idle=5 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=135 name= age=1 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=137 name= age=1 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:34909 fd=176 name= age=535968 idle=6 flags=N db=3 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=publish
+addr=/tmp/redis.sock:0 fd=57 name= age=5 idle=4 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=setex
+addr=/tmp/redis.sock:0 fd=65 name= age=1 idle=1 flags=U db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+
+[24567] 06 Oct 18:26:45.119 # --- CURRENT CLIENT INFO
+[24567] 06 Oct 18:26:45.119 # client: addr=/tmp/redis.sock:0 fd=93 name= age=1002 idle=0 flags=U db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=185178 obl=0 oll=0 omem=0 events=r cmd=get
+[24567] 06 Oct 18:26:45.119 # argv[0]: 'GET'
+[24567] 06 Oct 18:26:45.119 # argv[1]: ':1:vessels.view_helper._get_latest_vessel_news_dict_f6d5ed2a00ec0d8bebe34eec253cf2210fd46038'
+[24567] 06 Oct 18:26:45.119 # --- REGISTERS
+[24567] 06 Oct 18:26:45.119 # 
+RAX:000000000041d490 RBX:0000000002000000
+RCX:00000000e9de15c4 RDX:0000000000024ec5
+RDI:0000000000000000 RSI:0000000000000000
+RBP:00007f5425012380 RSP:00007fff0bcfdbe0
+R8 :00000000dac2356e R9 :00007f53d16cbc44
+R10:00000000ffffffa8 R11:0000000000000016
+R12:00007f53d16cbbe8 R13:00007f5425012380
+R14:000000007da24ec5 R15:00007f54250123c0
+RIP:0000000000419704 EFL:0000000000010206
+CSGSFS:0000000000000033
+[24567] 06 Oct 18:26:45.119 # (00007fff0bcfdc58) -> 00007f5425b3169a
+[24567] 06 Oct 18:26:45.119 # (00007fff0bcfdc50) -> 0000000000000007
+[24567] 06 Oct 18:26:45.119 # (00007fff0bcfdc48) -> 000000000042a51d
+[24567] 06 Oct 18:26:45.119 # (00007fff0bcfdc40) -> 00007f5425010e50
+[24567] 06 Oct 18:26:45.119 # (00007fff0bcfdc38) -> 00007f5410cc1000
+[24567] 06 Oct 18:26:45.119 # (00007fff0bcfdc30) -> 00007fff0bcfdc50
+[24567] 06 Oct 18:26:45.119 # (00007fff0bcfdc28) -> 000000000042a4d4
+[24567] 06 Oct 18:26:45.119 # (00007fff0bcfdc20) -> 0004e81500601cf8
+[24567] 06 Oct 18:26:45.119 # (00007fff0bcfdc18) -> 0000000000429ef0
+[24567] 06 Oct 18:26:45.119 # (00007fff0bcfdc10) -> 000000000000005d
+[24567] 06 Oct 18:26:45.119 # (00007fff0bcfdc08) -> 000000000002c1f8
+[24567] 06 Oct 18:26:45.119 # (00007fff0bcfdc00) -> 0000000000004000
+[24567] 06 Oct 18:26:45.119 # (00007fff0bcfdbf8) -> 0004e81500601cf8
+[24567] 06 Oct 18:26:45.119 # (00007fff0bcfdbf0) -> 00007f53a66e7de0
+[24567] 06 Oct 18:26:45.119 # (00007fff0bcfdbe8) -> 00007f54250e62b8
+[24567] 06 Oct 18:26:45.119 # (00007fff0bcfdbe0) -> 000000000000005d
+[24567] 06 Oct 18:26:45.119 # 
+=== REDIS BUG REPORT END. Make sure to include from START to END. ===

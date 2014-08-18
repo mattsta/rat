@@ -1,0 +1,21 @@
+=== REDIS BUG REPORT START: Cut & paste starting from here ===
+[14051] 13 Aug 11:24:55.021 #     Redis 2.8.11 crashed by signal: 8
+[14051] 13 Aug 11:24:55.021 #     Failed assertion: <no assertion failed> (<no file>:0)
+[14051] 13 Aug 11:24:55.021 # --- STACK TRACE
+redis-server *:6413(logStackTrace+0x3e)[0x44a5ae]
+redis-server *:6413(genRedisInfoString+0xdbf)[0x42084f]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0xf030)[0x7f77f2c1a030]
+redis-server *:6413(genRedisInfoString+0xdbf)[0x42084f]
+redis-server *:6413(infoCommand+0x4a)[0x42099a]
+redis-server *:6413(call+0x70)[0x41ef40]
+redis-server *:6413(processCommand+0x38d)[0x42108d]
+redis-server *:6413(processInputBuffer+0x51)[0x4297c1]
+redis-server *:6413(readQueryFromClient+0xb8)[0x4298e8]
+redis-server *:6413(aeProcessEvents+0x230)[0x41a530]
+redis-server *:6413(processEventsWhileBlocked+0x1e)[0x42a44e]
+redis-server *:6413(loadAppendOnlyFile+0x27d)[0x44797d]
+redis-server *:6413(loadDataFromDisk+0x44)[0x421cb4]
+redis-server *:6413(main+0x29b)[0x4193fb]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xfd)[0x7f77f289eead]
+redis-server *:6413[0x4195a9]
+[14051] 13 Aug 11:24:55.021 # --- INFO OUTPUT

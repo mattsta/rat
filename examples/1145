@@ -1,0 +1,188 @@
+=== REDIS BUG REPORT START: Cut & paste starting from here ===
+[24734] 03 Jun 19:53:45.919 # === ASSERTION FAILED OBJECT CONTEXT ===
+[24734] 03 Jun 19:53:45.919 # Object type: 0
+[24734] 03 Jun 19:53:45.919 # Object encoding: 0
+[24734] 03 Jun 19:53:45.919 # Object refcount: 1
+[24734] 03 Jun 19:53:45.919 # Object raw string len: 0
+[24734] 03 Jun 19:53:45.919 # Object raw string content: ""
+[24734] 03 Jun 19:53:45.919 # === ASSERTION FAILED ===
+[24734] 03 Jun 19:53:45.919 # ==> db.c:95 'retval == REDIS_OK' is not true
+[24734] 03 Jun 19:53:45.919 # (forcing SIGSEGV to print the bug report.)
+[24734] 03 Jun 19:53:45.919 #     Redis 2.6.6 crashed by signal: 11
+[24734] 03 Jun 19:53:45.919 #     Failed assertion: retval == REDIS_OK (db.c:95)
+[24734] 03 Jun 19:53:45.919 # --- STACK TRACE
+/usr/local/redis/bin/redis-server(logStackTrace+0x75)[0x440fb5]
+/usr/local/redis/bin/redis-server(_redisAssert+0x6f)[0x440e2f]
+/lib/libpthread.so.0(+0xf8f0)[0x7f8b590ff8f0]
+/usr/local/redis/bin/redis-server(_redisAssert+0x6f)[0x440e2f]
+/usr/local/redis/bin/redis-server(dbAdd+0x65)[0x42a2e5]
+/usr/local/redis/bin/redis-server(rdbLoad+0x292)[0x42e8d2]
+/usr/local/redis/bin/redis-server(loadDataFromDisk+0x1e)[0x41d3ce]
+/usr/local/redis/bin/redis-server(main+0x38b)[0x41e7fb]
+/lib/libc.so.6(__libc_start_main+0xfd)[0x7f8b58d8bc4d]
+/usr/local/redis/bin/redis-server[0x416dc9]
+[24734] 03 Jun 19:53:45.920 # --- INFO OUTPUT
+[24734] 03 Jun 19:53:45.920 # # Server
+redis_version:2.6.6
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_mode:standalone
+os:Linux 2.6.32-21-server x86_64
+arch_bits:64
+multiplexing_api:epoll
+gcc_version:4.4.3
+process_id:24734
+run_id:781cc4ad5ef552594ef2f5f173ba769862b29026
+tcp_port:16379
+uptime_in_seconds:0
+uptime_in_days:0
+lru_clock:0
+
+# Clients
+connected_clients:48
+client_longest_output_list:0
+client_biggest_input_buf:0
+blocked_clients:0
+
+# Memory
+used_memory:164198760
+used_memory_human:156.59M
+used_memory_rss:167387136
+used_memory_peak:164189240
+used_memory_peak_human:156.58M
+used_memory_lua:31744
+mem_fragmentation_ratio:1.02
+mem_allocator:jemalloc-3.2.0
+
+# Persistence
+loading:1
+rdb_changes_since_last_save:0
+rdb_bgsave_in_progress:0
+rdb_last_save_time:1370260424
+rdb_last_bgsave_status:ok
+rdb_last_bgsave_time_sec:-1
+rdb_current_bgsave_time_sec:-1
+aof_enabled:0
+aof_rewrite_in_progress:0
+aof_rewrite_scheduled:0
+aof_last_rewrite_time_sec:-1
+aof_current_rewrite_time_sec:-1
+aof_last_bgrewrite_status:ok
+loading_start_time:1370260424
+loading_total_bytes:920790961
+loading_loaded_bytes:30464147
+loading_loaded_perc:3.31
+loading_eta_seconds:1
+
+# Stats
+total_connections_received:1694
+total_commands_processed:0
+instantaneous_ops_per_sec:0
+rejected_connections:0
+expired_keys:0
+evicted_keys:0
+keyspace_hits:0
+keyspace_misses:0
+pubsub_channels:0
+pubsub_patterns:0
+latest_fork_usec:0
+
+# Replication
+role:master
+connected_slaves:0
+
+# CPU
+used_cpu_sys:0.13
+used_cpu_user:1.74
+used_cpu_sys_children:0.00
+used_cpu_user_children:0.00
+
+# Commandstats
+
+# Keyspace
+db0:keys=1,expires=0
+db2:keys=15,expires=0
+db3:keys=1709935,expires=0
+hash_init_value: 1370237202
+
+[24734] 03 Jun 19:53:45.920 # --- CLIENT LIST OUTPUT
+[24734] 03 Jun 19:53:45.921 # addr=x.x.x.x:45132 fd=11 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r
+ cmd=select
+addr=x.x.x.x:39378 fd=8 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=select
+addr=x.x.x.x:39380 fd=10 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39381 fd=15 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39382 fd=16 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39383 fd=17 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39384 fd=9 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39385 fd=12 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39386 fd=18 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39387 fd=19 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39388 fd=20 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39389 fd=21 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39390 fd=23 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39391 fd=22 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39392 fd=24 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39393 fd=25 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39394 fd=26 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39395 fd=6 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39396 fd=27 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39397 fd=28 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39398 fd=29 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39399 fd=30 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39400 fd=31 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39401 fd=32 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39402 fd=33 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39403 fd=34 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39404 fd=13 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39405 fd=14 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39406 fd=36 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39407 fd=37 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39408 fd=7 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:39409 fd=35 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+addr=x.x.x.x:64540 fd=39 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=x.x.x.x:45371 fd=44 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=x.x.x.x:25071 fd=45 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=select
+addr=x.x.x.x:64722 fd=49 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=x.x.x.x:25135 fd=46 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=select
+addr=x.x.x.x:64756 fd=38 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=x.x.x.x:25191 fd=43 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=select
+addr=x.x.x.x:65042 fd=48 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=x.x.x.x:65057 fd=50 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=x.x.x.x:65064 fd=47 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=x.x.x.x:45907 fd=51 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=x.x.x.x:65067 fd=40 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=x.x.x.x:45909 fd=52 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=x.x.x.x:25507 fd=42 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=x.x.x.x:41199 fd=53 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=49 oll=0 omem=0 events=rw cmd=ping
+addr=x.x.x.x:41200 fd=54 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+
+[24734] 03 Jun 19:53:45.921 # --- REGISTERS
+[24734] 03 Jun 19:53:45.921 # 
+RAX:0000000000000000 RBX:000000000000005f
+RCX:0000000000016e40 RDX:00007f8b590ebe98
+RDI:0000000000000000 RSI:0000000000000000
+RBP:0000000000498572 RSP:00007fffceb75d50
+R8 :0000000000f52e90 R9 :00000000ffffffff
+R10:7562206568742074 R11:0000000000000206
+R12:0000000000497986 R13:00000000001a181e
+R14:00007f8b4d7a39c0 R15:ffffffffffffffff
+RIP:0000000000440e2f EFL:0000000000010202
+CSGSFS:0000000000000033
+[24734] 03 Jun 19:53:45.921 # (00007fffceb75dc8) -> 0000000000446fd0
+[24734] 03 Jun 19:53:45.921 # (00007fffceb75dc0) -> 0000000000447080
+[24734] 03 Jun 19:53:45.921 # (00007fffceb75db8) -> 0000000000447090
+[24734] 03 Jun 19:53:45.921 # (00007fffceb75db0) -> 00000000004470b0
+[24734] 03 Jun 19:53:45.921 # (00007fffceb75da8) -> 0000000666207961
+[24734] 03 Jun 19:53:45.921 # (00007fffceb75da0) -> 0000000000f52c60
+[24734] 03 Jun 19:53:45.921 # (00007fffceb75d98) -> 00007f8b00000000
+[24734] 03 Jun 19:53:45.921 # (00007fffceb75d90) -> 42202130206f7420
+[24734] 03 Jun 19:53:45.921 # (00007fffceb75d88) -> 000000000042e8d2
+[24734] 03 Jun 19:53:45.921 # (00007fffceb75d80) -> 0000013f09e2c578
+[24734] 03 Jun 19:53:45.921 # (00007fffceb75d78) -> 00007f8b58462490
+[24734] 03 Jun 19:53:45.921 # (00007fffceb75d70) -> 00007fffceb75db0
+[24734] 03 Jun 19:53:45.921 # (00007fffceb75d68) -> 000000000042a2e5
+[24734] 03 Jun 19:53:45.921 # (00007fffceb75d60) -> 00007f8b4d7c5fb0
+[24734] 03 Jun 19:53:45.921 # (00007fffceb75d58) -> 00007f8b58462490
+[24734] 03 Jun 19:53:45.921 # (00007fffceb75d50) -> 00007f8b4d7a39c0
+[24734] 03 Jun 19:53:45.921 # 
+=== REDIS BUG REPORT END. Make sure to include from START to END. ===

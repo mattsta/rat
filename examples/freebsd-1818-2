@@ -1,0 +1,111 @@
+=== REDIS BUG REPORT START: Cut & paste starting from here ===
+[77232] 20 Jun 12:17:16.450 #     Redis 2.8.9 crashed by signal: 11
+[77232] 20 Jun 12:17:16.450 #     Failed assertion: <no assertion failed> (<no file>:0)
+[77232] 20 Jun 12:17:16.450 # --- STACK TRACE
+0x438da9 <???> at /usr/local/bin/redis-server
+0x800cdd3f6 <_swapcontext+0x146> at /lib/libthr.so.3
+0x800cdcff3 <sigaction+0x343> at /lib/libthr.so.3
+[77232] 20 Jun 12:17:16.586 # --- INFO OUTPUT
+[77232] 20 Jun 12:17:16.593 # # Server
+redis_version:2.8.9
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_build_id:daa03bf944e2f24
+redis_mode:standalone
+os:FreeBSD 10.0-RELEASE amd64
+arch_bits:64
+multiplexing_api:kqueue
+gcc_version:4.2.1
+process_id:77232
+run_id:469bd8d344fe28dc99979b9bc0b77a1ae07ca92c
+tcp_port:6379
+uptime_in_seconds:7453
+uptime_in_days:0
+hz:10
+lru_clock:10772108
+config_file:/usr/local/etc/redis.conf
+
+# Clients
+connected_clients:1
+client_longest_output_list:0
+client_biggest_input_buf:0
+blocked_clients:0
+
+# Memory
+used_memory:1080960
+used_memory_human:1.03M
+used_memory_rss:1047136
+used_memory_peak:1080960
+used_memory_peak_human:1.03M
+used_memory_lua:33792
+mem_fragmentation_ratio:0.97
+mem_allocator:libc
+
+# Persistence
+loading:0
+rdb_changes_since_last_save:0
+rdb_bgsave_in_progress:0
+rdb_last_save_time:1403281036
+rdb_last_bgsave_status:ok
+rdb_last_bgsave_time_sec:0
+rdb_current_bgsave_time_sec:-1
+aof_enabled:0
+aof_rewrite_in_progress:0
+aof_rewrite_scheduled:0
+aof_last_rewrite_time_sec:-1
+aof_current_rewrite_time_sec:-1
+aof_last_bgrewrite_status:ok
+aof_last_write_status:ok
+
+# Stats
+total_connections_received:2
+total_commands_processed:3
+instantaneous_ops_per_sec:0
+rejected_connections:0
+sync_full:0
+sync_partial_ok:0
+sync_partial_err:0
+expired_keys:0
+evicted_keys:0
+keyspace_hits:0
+keyspace_misses:0
+pubsub_channels:0
+pubsub_patterns:0
+latest_fork_usec:21602
+
+# Replication
+role:master
+connected_slaves:0
+master_repl_offset:0
+repl_backlog_active:0
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:0
+repl_backlog_histlen:0
+
+# CPU
+used_cpu_sys:0.74
+used_cpu_user:0.74
+used_cpu_sys_children:0.00
+used_cpu_user_children:0.00
+
+# Commandstats
+cmdstat_zadd:calls=1,usec=106636,usec_per_call=106636.00
+cmdstat_keys:calls=1,usec=9,usec_per_call=9.00
+cmdstat_multi:calls=1,usec=14,usec_per_call=14.00
+
+# Keyspace
+db0:keys=1,expires=0,avg_ttl=0
+hash_init_value: 1403826074
+
+[77232] 20 Jun 12:17:16.593 # --- CLIENT LIST OUTPUT
+[77232] 20 Jun 12:17:16.593 # addr=127.0.0.1:45386 fd=6 name= age=1 idle=0 flags=x db=0 sub=0 psub=0 multi=1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=rw cmd=sadd
+
+[77232] 20 Jun 12:17:16.593 # --- CURRENT CLIENT INFO
+[77232] 20 Jun 12:17:16.593 # client: addr=127.0.0.1:45386 fd=6 name= age=1 idle=0 flags=x db=0 sub=0 psub=0 multi=1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=rw cmd=sadd
+[77232] 20 Jun 12:17:16.593 # argv[0]: 'sadd'
+[77232] 20 Jun 12:17:16.593 # argv[1]: 'resque:gitlab:queues'
+[77232] 20 Jun 12:17:16.593 # argv[2]: 'mailer'
+[77232] 20 Jun 12:17:16.593 # --- REGISTERS
+[77232] 20 Jun 12:17:16.593 #   Dumping of registers not supported for this OS/arch
+[77232] 20 Jun 12:17:16.593 # 
+=== REDIS BUG REPORT END. Make sure to include from START to END. ===

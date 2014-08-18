@@ -1,0 +1,146 @@
+=== REDIS BUG REPORT START: Cut & paste starting from here ===
+[6819] 05 May 15:22:19.472 # === ASSERTION FAILED ===
+[6819] 05 May 15:22:19.472 # ==> rdb.c:944 'ret == REDIS_OK' is not true
+[6819] 05 May 15:22:19.473 # (forcing SIGSEGV to print the bug report.)
+[6819] 05 May 15:22:19.473 #     Redis 2.8.4 crashed by signal: 11
+[6819] 05 May 15:22:19.473 #     Failed assertion: ret == REDIS_OK (rdb.c:944)
+[6819] 05 May 15:22:19.473 # --- STACK TRACE
+/usr/sbin/redis-server 0.0.0.0:7379(logStackTrace+0x43)[0x445c93]
+/usr/sbin/redis-server 0.0.0.0:7379(_redisAssert+0x6f)[0x44583f]
+/lib64/libpthread.so.0(+0xf710)[0x7f9cc793a710]
+/usr/sbin/redis-server 0.0.0.0:7379(_redisAssert+0x6f)[0x44583f]
+/usr/sbin/redis-server 0.0.0.0:7379(rdbLoadObject+0x82b)[0x43044b]
+/usr/sbin/redis-server 0.0.0.0:7379(rdbLoad+0x1a2)[0x430622]
+/usr/sbin/redis-server 0.0.0.0:7379(loadDataFromDisk+0x1e)[0x41d1de]
+/usr/sbin/redis-server 0.0.0.0:7379(main+0x237)[0x41df37]
+/lib64/libc.so.6(__libc_start_main+0xfd)[0x7f9cc75b5d1d]
+/usr/sbin/redis-server 0.0.0.0:7379[0x415c29]
+[6819] 05 May 15:22:19.473 # --- INFO OUTPUT
+[6819] 05 May 15:22:19.473 # # Server
+redis_version:2.8.4
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_build_id:616ac40e43fe3d59
+redis_mode:standalone
+os:Linux 2.6.32-042stab084.14 x86_64
+arch_bits:64
+multiplexing_api:epoll
+gcc_version:4.4.7
+process_id:6819
+run_id:ac49a2cd3d4392ee083f910365806293265351ac
+tcp_port:7379
+uptime_in_seconds:0
+uptime_in_days:0
+hz:10
+lru_clock:0
+config_file:/etc/redis2.conf
+
+# Clients
+connected_clients:0
+client_longest_output_list:0
+client_biggest_input_buf:0
+blocked_clients:0
+
+# Memory
+used_memory:2439472
+used_memory_human:2.33M
+used_memory_rss:4120576
+used_memory_peak:0
+used_memory_peak_human:0B
+used_memory_lua:33792
+mem_fragmentation_ratio:1.69
+mem_allocator:jemalloc-3.2.0
+
+# Persistence
+loading:1
+rdb_changes_since_last_save:0
+rdb_bgsave_in_progress:0
+rdb_last_save_time:1399303339
+rdb_last_bgsave_status:ok
+rdb_last_bgsave_time_sec:-1
+rdb_current_bgsave_time_sec:-1
+aof_enabled:0
+aof_rewrite_in_progress:0
+aof_rewrite_scheduled:0
+aof_last_rewrite_time_sec:-1
+aof_current_rewrite_time_sec:-1
+aof_last_bgrewrite_status:ok
+loading_start_time:1399303339
+loading_total_bytes:13135738
+loading_loaded_bytes:0
+loading_loaded_perc:0.00
+loading_eta_seconds:1
+
+# Stats
+total_connections_received:0
+total_commands_processed:0
+instantaneous_ops_per_sec:0
+rejected_connections:0
+sync_full:0
+sync_partial_ok:0
+sync_partial_err:0
+expired_keys:0
+evicted_keys:0
+keyspace_hits:0
+keyspace_misses:0
+pubsub_channels:0
+pubsub_patterns:0
+latest_fork_usec:0
+
+# Replication
+role:master
+connected_slaves:0
+master_repl_offset:0
+repl_backlog_active:0
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:0
+repl_backlog_histlen:0
+
+# CPU
+used_cpu_sys:0.00
+used_cpu_user:0.01
+used_cpu_sys_children:0.00
+used_cpu_user_children:0.00
+
+# Commandstats
+
+# Keyspace
+db0:keys=19554,expires=82,avg_ttl=0
+hash_init_value: 1398846031
+
+[6819] 05 May 15:22:19.473 # --- CLIENT LIST OUTPUT
+[6819] 05 May 15:22:19.473 # 
+[6819] 05 May 15:22:19.473 # --- REGISTERS
+[6819] 05 May 15:22:19.473 # 
+RAX:0000000000000000 RBX:00000000000003b0
+RCX:0000000000000000 RDX:0000000000014410
+RDI:00007f9cc7926e80 RSI:0000000000000000
+RBP:00000000004a2348 RSP:00007fffabd75590
+R8 :00007f9cc7926e80 R9 :00007f9cc7926ed0
+R10:00007f9cc7926ed0 R11:0000000000000000
+R12:00000000004a2435 R13:0000000000002f69
+R14:00007f9cc0edc1b0 R15:ffffffffffffffff
+RIP:000000000044583f EFL:0000000000010206
+CSGSFS:7562000000000033
+[6819] 05 May 15:22:19.473 # (00007fffabd7559f) -> 00007f9cc0cd61e0
+[6819] 05 May 15:22:19.473 # (00007fffabd7559e) -> 0000000000f8b780
+[6819] 05 May 15:22:19.473 # (00007fffabd7559d) -> 00000145ccfa7dc6
+[6819] 05 May 15:22:19.473 # (00007fffabd7559c) -> 00007f9cc0d0e280
+[6819] 05 May 15:22:19.473 # (00007fffabd7559b) -> 00007fffabd75a40
+[6819] 05 May 15:22:19.473 # (00007fffabd7559a) -> 00007f9cc0cd61e0
+[6819] 05 May 15:22:19.473 # (00007fffabd75599) -> 000000000042fa82
+[6819] 05 May 15:22:19.473 # (00007fffabd75598) -> 00007fffabd75a40
+[6819] 05 May 15:22:19.473 # (00007fffabd75597) -> 0000000000000031
+[6819] 05 May 15:22:19.473 # (00007fffabd75596) -> 00007fffabd75a40
+[6819] 05 May 15:22:19.473 # (00007fffabd75595) -> 0000000000428ef8
+[6819] 05 May 15:22:19.473 # (00007fffabd75594) -> 00007f9cc0d3abc8
+[6819] 05 May 15:22:19.473 # (00007fffabd75593) -> 000000000043044b
+[6819] 05 May 15:22:19.473 # (00007fffabd75592) -> 00007f9cc0edc1a0
+[6819] 05 May 15:22:19.473 # (00007fffabd75591) -> 00007fffabd75a40
+[6819] 05 May 15:22:19.473 # (00007fffabd75590) -> 00007f9cc0edc0b0
+[6819] 05 May 15:22:19.473 # --- FAST MEMORY TEST
+[6819] 05 May 15:22:19.473 # Bio thread for job type #0 terminated
+[6819] 05 May 15:22:19.473 # Bio thread for job type #1 terminated
+[6819] 05 May 15:22:19.673 # Fast memory test PASSED, however your memory can still be broken. Please run a memory test for several hours if possible.
+[6819] 05 May 15:22:19.673 # 
+=== REDIS BUG REPORT END. Make sure to include from START to END. ===

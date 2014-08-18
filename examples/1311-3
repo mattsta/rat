@@ -1,0 +1,179 @@
+=== REDIS BUG REPORT START: Cut & paste starting from here ===
+[32268] 17 Oct 22:08:19.148 #     Redis 2.6.16 crashed by signal: 11
+[32268] 17 Oct 22:08:19.149 #     Failed assertion: <no assertion failed> (<no file>:0)
+[32268] 17 Oct 22:08:19.149 # --- STACK TRACE
+/usr/bin/redis-server(logStackTrace+0x52)[0x43c822]
+/usr/bin/redis-server(dictNext+0x80)[0x414560]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0xfcb0)[0x7ffebef39cb0]
+/usr/bin/redis-server(dictNext+0x80)[0x414560]
+/usr/bin/redis-server(keysCommand+0x56)[0x4240a6]
+/usr/bin/redis-server(call+0x5f)[0x4168bf]
+/usr/bin/redis-server(processCommand+0x2ed)[0x41887d]
+/usr/bin/redis-server(processInputBuffer+0x4f)[0x420eaf]
+/usr/bin/redis-server(readQueryFromClient+0xa3)[0x420fc3]
+/usr/bin/redis-server(aeProcessEvents+0x145)[0x412595]
+/usr/bin/redis-server(aeMain+0x2b)[0x41286b]
+/usr/bin/redis-server(main+0x2a3)[0x4116a3]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xed)[0x7ffebeb8c76d]
+/usr/bin/redis-server[0x4117f9]
+[32268] 17 Oct 22:08:19.149 # --- INFO OUTPUT
+[32268] 17 Oct 22:08:19.149 # # Server
+redis_version:2.6.16
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_mode:standalone
+os:Linux 3.2.0-52-generic x86_64
+arch_bits:64
+multiplexing_api:epoll
+gcc_version:4.6.3
+process_id:32268
+run_id:86da6bcec39dcc07455e9df712b4e2a9946c2c39
+tcp_port:6379
+uptime_in_seconds:553197
+uptime_in_days:6
+hz:10
+lru_clock:1889529
+
+# Clients
+connected_clients:21
+client_longest_output_list:2
+client_biggest_input_buf:0
+blocked_clients:0
+
+# Memory
+used_memory:13718367344
+used_memory_human:12.78G
+used_memory_rss:15742947328
+used_memory_peak:15494115640
+used_memory_peak_human:14.43G
+used_memory_lua:31744
+mem_fragmentation_ratio:1.15
+mem_allocator:jemalloc-3.4.0
+
+# Persistence
+loading:0
+rdb_changes_since_last_save:15021867
+rdb_bgsave_in_progress:0
+rdb_last_save_time:1382038193
+rdb_last_bgsave_status:err
+rdb_last_bgsave_time_sec:0
+rdb_current_bgsave_time_sec:-1
+aof_enabled:0
+aof_rewrite_in_progress:0
+aof_rewrite_scheduled:0
+aof_last_rewrite_time_sec:-1
+aof_current_rewrite_time_sec:-1
+aof_last_bgrewrite_status:ok
+
+# Stats
+total_connections_received:722664
+total_commands_processed:477977126
+instantaneous_ops_per_sec:42896
+rejected_connections:0
+expired_keys:71
+evicted_keys:0
+keyspace_hits:195951397
+keyspace_misses:16782414
+pubsub_channels:0
+pubsub_patterns:0
+latest_fork_usec:230327
+
+# Replication
+role:master
+connected_slaves:0
+
+# CPU
+used_cpu_sys:4105.16
+used_cpu_user:4276.77
+used_cpu_sys_children:5492.17
+used_cpu_user_children:130848.36
+
+# Commandstats
+cmdstat_get:calls=188944653,usec=386208755,usec_per_call=2.04
+cmdstat_set:calls=59816816,usec=96649796,usec_per_call=1.62
+cmdstat_del:calls=58515830,usec=179149961,usec_per_call=3.06
+cmdstat_exists:calls=76566549,usec=167801589,usec_per_call=2.19
+cmdstat_lpush:calls=4,usec=31,usec_per_call=7.75
+cmdstat_lrange:calls=14,usec=50,usec_per_call=3.57
+cmdstat_sadd:calls=228940,usec=564929,usec_per_call=2.47
+cmdstat_smembers:calls=29927,usec=16831851,usec_per_call=562.43
+cmdstat_zadd:calls=68793936,usec=529802181,usec_per_call=7.70
+cmdstat_zincrby:calls=127463,usec=2119400,usec_per_call=16.63
+cmdstat_zrange:calls=89853,usec=36933004,usec_per_call=411.04
+cmdstat_zrangebyscore:calls=2757412,usec=42273925,usec_per_call=15.33
+cmdstat_zcard:calls=7882356,usec=18202374,usec_per_call=2.31
+cmdstat_zscore:calls=1112236,usec=6973556,usec_per_call=6.27
+cmdstat_zrank:calls=1881376,usec=10055075,usec_per_call=5.34
+cmdstat_zrevrank:calls=4661976,usec=25215237,usec_per_call=5.41
+cmdstat_hset:calls=18977,usec=164591,usec_per_call=8.67
+cmdstat_hget:calls=2714365,usec=15542577,usec_per_call=5.73
+cmdstat_hgetall:calls=2659530,usec=17561298,usec_per_call=6.60
+cmdstat_select:calls=498917,usec=1445131,usec_per_call=2.90
+cmdstat_expire:calls=113,usec=583,usec_per_call=5.16
+cmdstat_keys:calls=49,usec=395984599,usec_per_call=8081318.50
+cmdstat_ping:calls=37310,usec=37640,usec_per_call=1.01
+cmdstat_multi:calls=314652,usec=279098,usec_per_call=0.89
+cmdstat_exec:calls=314652,usec=59583700,usec_per_call=189.36
+cmdstat_info:calls=9220,usec=1942595,usec_per_call=210.69
+
+# Keyspace
+db0:keys=30143365,expires=13,avg_ttl=6787245
+hash_init_value: 1380987827
+
+[32268] 17 Oct 22:08:19.150 # --- CLIENT LIST OUTPUT
+[32268] 17 Oct 22:08:19.150 # addr=192.168.0.22:58508 fd=19 name= age=306765 idle=306595 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=192.168.0.12:36195 fd=14 name= age=104172 idle=8 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zcard
+addr=192.168.0.12:55337 fd=9 name= age=65116 idle=29 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=192.168.0.12:32831 fd=5 name= age=12674 idle=6 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zcard
+addr=192.168.0.12:38865 fd=20 name= age=3406 idle=30 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=smembers
+addr=192.168.0.12:38876 fd=31 name= age=3402 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zcard
+addr=192.168.0.12:38889 fd=36 name= age=3371 idle=3 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=192.168.0.12:38892 fd=34 name= age=3369 idle=3 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zcard
+addr=192.168.0.12:38896 fd=43 name= age=3349 idle=8 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=192.168.0.12:39186 fd=24 name= age=2521 idle=3 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=192.168.0.12:39202 fd=26 name= age=2432 idle=19 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zcard
+addr=192.168.0.201:33375 fd=10 name= age=747 idle=747 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=info
+addr=192.168.0.12:39630 fd=15 name= age=358 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=2 omem=720 events=rw cmd=keys
+addr=192.168.0.201:33396 fd=16 name= age=327 idle=327 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=info
+addr=192.168.0.201:33399 fd=18 name= age=267 idle=267 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=info
+addr=192.168.0.201:33402 fd=13 name= age=207 idle=207 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=info
+addr=192.168.0.201:33405 fd=12 name= age=147 idle=147 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=info
+addr=192.168.0.201:33408 fd=17 name= age=87 idle=87 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=info
+addr=192.168.0.201:33411 fd=6 name= age=27 idle=27 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=info
+addr=192.168.0.22:32810 fd=7 name= age=4 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=192.168.0.2:51749 fd=8 name= age=1 idle=1 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+
+[32268] 17 Oct 22:08:19.150 # --- CURRENT CLIENT INFO
+[32268] 17 Oct 22:08:19.150 # client: addr=192.168.0.12:39630 fd=15 name= age=358 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=2 omem=720 events=rw cmd=keys
+[32268] 17 Oct 22:08:19.150 # argv[0]: 'KEYS'
+[32268] 17 Oct 22:08:19.150 # argv[1]: '2013-10-15:*'
+[32268] 17 Oct 22:08:19.150 # --- REGISTERS
+[32268] 17 Oct 22:08:19.150 # 
+RAX:000000000001e450 RBX:00407ffb0e072c60
+RCX:000000000000001e RDX:00007ffbc5400000
+RDI:00007ffe7fc56a00 RSI:000000000000000c
+RBP:00007ffe7fc56a00 RSP:00007fff21fce168
+R8 :0000000000000000 R9 :000000000000007f
+R10:0000000000000041 R11:0000000000000280
+R12:00007ffebe01a1b0 R13:00007ffebe01a1a0
+R14:00007ffdf3d02d88 R15:0000000000000006
+RIP:0000000000414560 EFL:0000000000010206
+CSGSFS:0000000000000033
+[32268] 17 Oct 22:08:19.150 # (00007fff21fce1e0) -> 00007ffc6ffc9f38
+[32268] 17 Oct 22:08:19.150 # (00007fff21fce1d8) -> 00000000004168bf
+[32268] 17 Oct 22:08:19.150 # (00007fff21fce1d0) -> 0000000000000001
+[32268] 17 Oct 22:08:19.150 # (00007fff21fce1c8) -> 0000000000e5372b
+[32268] 17 Oct 22:08:19.150 # (00007fff21fce1c0) -> 0000000000004000
+[32268] 17 Oct 22:08:19.150 # (00007fff21fce1b8) -> 0004e8f63797f0ae
+[32268] 17 Oct 22:08:19.150 # (00007fff21fce1b0) -> 0000000000000007
+[32268] 17 Oct 22:08:19.150 # (00007fff21fce1a8) -> 00007ffb8cc06000
+[32268] 17 Oct 22:08:19.150 # (00007fff21fce1a0) -> 00007ffb8cc06000
+[32268] 17 Oct 22:08:19.150 # (00007fff21fce198) -> 00007ffd13c9fb20
+[32268] 17 Oct 22:08:19.150 # (00007fff21fce190) -> 0000000c21fce1b0
+[32268] 17 Oct 22:08:19.150 # (00007fff21fce188) -> 00000000004240a6
+[32268] 17 Oct 22:08:19.150 # (00007fff21fce180) -> 00007ffe7fc56a00
+[32268] 17 Oct 22:08:19.150 # (00007fff21fce178) -> 0000000000000000
+[32268] 17 Oct 22:08:19.150 # (00007fff21fce170) -> 00007ffb8cc06000
+[32268] 17 Oct 22:08:19.150 # (00007fff21fce168) -> 00007ffd49ac1408
+[32268] 17 Oct 22:08:19.150 # 
+=== REDIS BUG REPORT END. Make sure to include from START to END. ===

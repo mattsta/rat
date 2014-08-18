@@ -1,0 +1,24 @@
+=== REDIS BUG REPORT START: Cut & paste starting from here ===
+[1] 14 Aug 16:24:02.907 # ------------------------------------------------
+[1] 14 Aug 16:24:02.907 # !!! Software Failure. Press left mouse button to continue
+[1] 14 Aug 16:24:02.907 # Guru Meditation: "Redis aborting for OUT OF MEMORY" #redis.c:3051
+[1] 14 Aug 16:24:02.907 # (forcing SIGSEGV in order to print the stack trace)
+[1] 14 Aug 16:24:02.907 # ------------------------------------------------
+[1] 14 Aug 16:24:02.907 # Redis 2.8.12 crashed by signal: 11
+[1] 14 Aug 16:24:02.907 # Failed assertion: (:0)
+[1] 14 Aug 16:24:02.907 # --- STACK TRACE
+/usr/bin/redis-server *:6379(logStackTrace+0x33)[0x445883]
+/usr/bin/redis-server *:6379(_redisPanic+0x7a)[0x44496a]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0x10340)[0x7ff8b3442340]
+/usr/bin/redis-server *:6379(_redisPanic+0x7a)[0x44496a]
+/usr/bin/redis-server *:6379(redisOutOfMemoryHandler+0x2c)[0x4174fc]
+/usr/bin/redis-server *:6379(zrealloc+0xd1)[0x41dc51]
+/usr/bin/redis-server *:6379(sdsRemoveFreeSpace+0x18)[0x41c558]
+/usr/bin/redis-server *:6379(clientsCronResizeQueryBuffer+0x84)[0x417f14]
+/usr/bin/redis-server *:6379(clientsCron+0x76)[0x417fa6]
+/usr/bin/redis-server *:6379(serverCron+0x170)[0x419a00]
+/usr/bin/redis-server *:6379(aeProcessEvents+0x202)[0x414a22]
+/usr/bin/redis-server *:6379(aeMain+0x2b)[0x414cab]
+/usr/bin/redis-server *:6379(main+0x31a)[0x413a9a]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf5)[0x7ff8b308dec5]
+/usr/bin/redis-server *:6379[0x413b9f]

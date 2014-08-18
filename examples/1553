@@ -1,0 +1,160 @@
+=== REDIS BUG REPORT START: Cut & paste starting from here ===
+[726] 15 Feb 11:25:42.128 #     Redis 2.8.2 crashed by signal: 11
+[726] 15 Feb 11:25:42.128 #     Failed assertion: <no assertion failed> (<no file>:0)
+[726] 15 Feb 11:25:42.128 # --- STACK TRACE
+0   redis-server                        0x000000010b968a07 logStackTrace + 103
+1   redis-server                        0x000000010b976daf dlFlushDb + 47
+2   libsystem_c.dylib                   0x00007fff8f6f294a _sigtramp + 26
+3   ???                                 0x00007fff6b54935d 0x0 + 140734994092893
+4   redis-server                        0x000000010b94754d flushdbCommand + 93
+5   redis-server                        0x000000010b938d76 call + 198
+6   redis-server                        0x000000010b939376 processCommand + 854
+7   redis-server                        0x000000010b94400c processInputBuffer + 140
+8   redis-server                        0x000000010b941911 readQueryFromClient + 417
+9   redis-server                        0x000000010b933125 aeProcessEvents + 517
+10  redis-server                        0x000000010b9333fb aeMain + 43
+11  redis-server                        0x000000010b93b461 main + 993
+12  libdyld.dylib                       0x00007fff8eba07e1 start + 0
+[726] 15 Feb 11:25:42.128 # --- INFO OUTPUT
+[726] 15 Feb 11:25:42.128 # # Server
+redis_version:2.8.2
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_build_id:f56047c04dbf5b78
+redis_mode:standalone
+os:Darwin 12.4.0 x86_64
+arch_bits:64
+multiplexing_api:kqueue
+gcc_version:4.2.1
+process_id:726
+run_id:a29ae13bbd8f3aafdd1a1423bad8fe6943857806
+tcp_port:21332
+uptime_in_seconds:1
+uptime_in_days:0
+hz:10
+lru_clock:832342
+config_file:/Users/sgvivek/Downloads/redis-allkeys-real-lru/tests/tmp/server.685.1/./tests/tmp/redis.conf.685.2
+
+# Clients
+connected_clients:1
+client_longest_output_list:0
+client_biggest_input_buf:0
+blocked_clients:0
+
+# Memory
+used_memory:1006816
+used_memory_human:983.22K
+used_memory_rss:1990656
+used_memory_peak:1005648
+used_memory_peak_human:982.08K
+used_memory_lua:33792
+mem_fragmentation_ratio:1.98
+mem_allocator:libc
+
+# Persistence
+loading:0
+rdb_changes_since_last_save:31
+rdb_bgsave_in_progress:0
+rdb_last_save_time:1392443742
+rdb_last_bgsave_status:ok
+rdb_last_bgsave_time_sec:-1
+rdb_current_bgsave_time_sec:-1
+aof_enabled:0
+aof_rewrite_in_progress:0
+aof_rewrite_scheduled:0
+aof_last_rewrite_time_sec:-1
+aof_current_rewrite_time_sec:-1
+aof_last_bgrewrite_status:ok
+
+# Stats
+total_connections_received:3
+total_commands_processed:105
+instantaneous_ops_per_sec:41
+rejected_connections:0
+sync_full:0
+sync_partial_ok:0
+sync_partial_err:0
+expired_keys:0
+evicted_keys:0
+keyspace_hits:2
+keyspace_misses:1
+pubsub_channels:0
+pubsub_patterns:0
+latest_fork_usec:0
+
+# Replication
+role:master
+connected_slaves:0
+master_repl_offset:0
+repl_backlog_active:0
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:0
+repl_backlog_histlen:0
+
+# CPU
+used_cpu_sys:0.01
+used_cpu_user:0.00
+used_cpu_sys_children:0.00
+used_cpu_user_children:0.00
+
+# Commandstats
+cmdstat_set:calls=13,usec=132,usec_per_call=10.15
+cmdstat_del:calls=6,usec=26,usec_per_call=4.33
+cmdstat_exists:calls=5,usec=15,usec_per_call=3.00
+cmdstat_rpush:calls=6,usec=71,usec_per_call=11.83
+cmdstat_lpush:calls=1,usec=11,usec_per_call=11.00
+cmdstat_lrange:calls=2,usec=14,usec_per_call=7.00
+cmdstat_sadd:calls=1,usec=18,usec_per_call=18.00
+cmdstat_srem:calls=1,usec=58,usec_per_call=58.00
+cmdstat_select:calls=2,usec=14,usec_per_call=7.00
+cmdstat_ping:calls=9,usec=11,usec_per_call=1.22
+cmdstat_multi:calls=20,usec=52,usec_per_call=2.60
+cmdstat_exec:calls=18,usec=219,usec_per_call=12.17
+cmdstat_discard:calls=1,usec=4,usec_per_call=4.00
+cmdstat_flushdb:calls=1,usec=6,usec_per_call=6.00
+cmdstat_flushall:calls=2,usec=1543,usec_per_call=771.50
+cmdstat_sort:calls=1,usec=52,usec_per_call=52.00
+cmdstat_config:calls=2,usec=38,usec_per_call=19.00
+cmdstat_watch:calls=12,usec=63,usec_per_call=5.25
+cmdstat_unwatch:calls=2,usec=7,usec_per_call=3.50
+
+# Keyspace
+hash_init_value: 1391646994
+
+[726] 15 Feb 11:25:42.128 # --- CLIENT LIST OUTPUT
+[726] 15 Feb 11:25:42.128 # addr=127.0.0.1:49303 fd=10 name= age=0 idle=0 flags=d db=9 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=flushdb
+
+[726] 15 Feb 11:25:42.128 # --- CURRENT CLIENT INFO
+[726] 15 Feb 11:25:42.128 # client: addr=127.0.0.1:49303 fd=10 name= age=0 idle=0 flags=d db=9 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=flushdb
+[726] 15 Feb 11:25:42.128 # argv[0]: 'flushdb'
+[726] 15 Feb 11:25:42.128 # --- REGISTERS
+[726] 15 Feb 11:25:42.128 # 
+RAX:0003000000000000 RBX:00007fa9cc000000
+RCX:00007fa9c9d000e0 RDX:0000000000000000
+RDI:00007fa9c9c08d70 RSI:0000000000000009
+RBP:00007fff542ce920 RSP:00007fff542ce920
+R8 :0000000000000002 R9 :0000000012bf3dee
+R10:0000000000000000 R11:0000000012bf3dee
+R12:00007fa9cc000000 R13:0000000000000007
+R14:00007fa9c9d00078 R15:00007fa9cc000000
+RIP:000000010b976daf EFL:0000000000010206
+CS :000000000000002b FS:0000000000000000  GS:0000000000000000
+[726] 15 Feb 11:25:42.128 # (00007fff542ce92f) -> 000000010b9bf0d0
+[726] 15 Feb 11:25:42.128 # (00007fff542ce92e) -> 00007fa9cc000000
+[726] 15 Feb 11:25:42.128 # (00007fff542ce92d) -> 00007fa9cc000000
+[726] 15 Feb 11:25:42.128 # (00007fff542ce92c) -> 00007fa90001f462
+[726] 15 Feb 11:25:42.128 # (00007fff542ce92b) -> 0000000052ff015e
+[726] 15 Feb 11:25:42.128 # (00007fff542ce92a) -> 00000000fffffff5
+[726] 15 Feb 11:25:42.128 # (00007fff542ce929) -> 000000000001f462
+[726] 15 Feb 11:25:42.128 # (00007fff542ce928) -> 0000000052ff015e
+[726] 15 Feb 11:25:42.128 # (00007fff542ce927) -> 000000000000001e
+[726] 15 Feb 11:25:42.128 # (00007fff542ce926) -> 00007fff542ce960
+[726] 15 Feb 11:25:42.128 # (00007fff542ce925) -> 000000010b938d76
+[726] 15 Feb 11:25:42.128 # (00007fff542ce924) -> 00007fff542ce9b0
+[726] 15 Feb 11:25:42.128 # (00007fff542ce923) -> 000000010b9bf0d0
+[726] 15 Feb 11:25:42.128 # (00007fff542ce922) -> 000000010b9bc9c0
+[726] 15 Feb 11:25:42.128 # (00007fff542ce921) -> 000000010b94754d
+[726] 15 Feb 11:25:42.128 # (00007fff542ce920) -> 00007fff542ce940
+[726] 15 Feb 11:25:42.128 # 
+=== REDIS BUG REPORT END. Make sure to include from START to END. ===
+make: *** [test] Error 2

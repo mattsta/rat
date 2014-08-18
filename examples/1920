@@ -1,0 +1,188 @@
+=== REDIS BUG REPORT START: Cut & paste starting from here ===
+[22926] 07 Aug 21:03:32.467 #     Redis 2.8.11 crashed by signal: 11
+[22926] 07 Aug 21:03:32.467 #     Failed assertion: <no assertion failed> (<no file>:0)
+[22926] 07 Aug 21:03:32.467 # --- STACK TRACE
+/usr/local/bin/redis-server *:6379(logStackTrace+0x3e)[0x44888e]
+/usr/local/bin/redis-server *:6379(dictRehash+0x76)[0x4192b6]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0xfcb0)[0x7f3d2e667cb0]
+/usr/local/bin/redis-server *:6379(dictRehash+0x76)[0x4192b6]
+/usr/local/bin/redis-server *:6379(dictAddRaw+0x132)[0x419722]
+/usr/local/bin/redis-server *:6379(dictAdd+0x1e)[0x4197ae]
+/usr/local/bin/redis-server *:6379(setTypeAdd+0xd3)[0x4354d3]
+/usr/local/bin/redis-server *:6379(saddCommand+0x72)[0x4355a2]
+/usr/local/bin/redis-server *:6379(call+0x70)[0x41c720]
+/usr/local/bin/redis-server *:6379(processCommand+0x38d)[0x41e9ad]
+/usr/local/bin/redis-server *:6379(processInputBuffer+0x4f)[0x42711f]
+/usr/local/bin/redis-server *:6379(readQueryFromClient+0xb8)[0x427248]
+/usr/local/bin/redis-server *:6379(aeProcessEvents+0x145)[0x417a25]
+/usr/local/bin/redis-server *:6379(aeMain+0x2b)[0x417cfb]
+/usr/local/bin/redis-server *:6379(main+0x325)[0x416aa5]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xed)[0x7f3d2e2b976d]
+/usr/local/bin/redis-server *:6379[0x416bc9]
+[22926] 07 Aug 21:03:32.490 # --- INFO OUTPUT
+[22926] 07 Aug 21:03:32.490 # # Server
+redis_version:2.8.11
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_build_id:1e5377331f8efe6f
+redis_mode:standalone
+os:Linux 3.2.0-36-generic x86_64
+arch_bits:64
+multiplexing_api:epoll
+gcc_version:4.6.3
+process_id:22926
+run_id:e50c65f1d4a4c378c815305540d164405ab1b61a
+tcp_port:6379
+uptime_in_seconds:3407760
+uptime_in_days:39
+hz:10
+lru_clock:14929284
+config_file:/etc/redis/6379.conf
+
+# Clients
+connected_clients:1
+client_longest_output_list:0
+client_biggest_input_buf:0
+blocked_clients:0
+
+# Memory
+used_memory:1071346464
+used_memory_human:1021.72M
+used_memory_rss:1092640768
+used_memory_peak:1071435800
+used_memory_peak_human:1021.80M
+used_memory_lua:33792
+mem_fragmentation_ratio:1.02
+mem_allocator:jemalloc-3.2.0
+
+# Persistence
+loading:0
+rdb_changes_since_last_save:332
+rdb_bgsave_in_progress:0
+rdb_last_save_time:1407438201
+rdb_last_bgsave_status:ok
+rdb_last_bgsave_time_sec:7
+rdb_current_bgsave_time_sec:-1
+aof_enabled:0
+aof_rewrite_in_progress:0
+aof_rewrite_scheduled:0
+aof_last_rewrite_time_sec:-1
+aof_current_rewrite_time_sec:-1
+aof_last_bgrewrite_status:ok
+aof_last_write_status:ok
+
+# Stats
+total_connections_received:76355927
+total_commands_processed:104276819
+instantaneous_ops_per_sec:49
+rejected_connections:0
+sync_full:1
+sync_partial_ok:0
+sync_partial_err:0
+expired_keys:20
+evicted_keys:0
+keyspace_hits:53681752
+keyspace_misses:5143059
+pubsub_channels:0
+pubsub_patterns:0
+latest_fork_usec:21895
+
+# Replication
+role:master
+connected_slaves:1
+slave0:ip=10.0.0.145,port=6379,state=online,offset=15658672253,lag=0
+master_repl_offset:15658673020
+repl_backlog_active:1
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:15657624445
+repl_backlog_histlen:1048576
+
+# CPU
+used_cpu_sys:13900.80
+used_cpu_user:9264.40
+used_cpu_sys_children:3221.63
+used_cpu_user_children:42100.92
+
+# Commandstats
+cmdstat_get:calls=55386,usec=391685,usec_per_call=7.07
+cmdstat_setnx:calls=1078297,usec=9254897,usec_per_call=8.58
+cmdstat_setex:calls=7953724,usec=94629118,usec_per_call=11.90
+cmdstat_del:calls=1059681,usec=5814775,usec_per_call=5.49
+cmdstat_mget:calls=747558,usec=18377330,usec_per_call=24.58
+cmdstat_sadd:calls=7953723,usec=127108750,usec_per_call=15.98
+cmdstat_zadd:calls=1934014,usec=14452905,usec_per_call=7.47
+cmdstat_zrem:calls=356823,usec=5309732,usec_per_call=14.88
+cmdstat_zrange:calls=1499772,usec=47197551,usec_per_call=31.47
+cmdstat_zcard:calls=1769536,usec=8798449,usec_per_call=4.97
+cmdstat_zscore:calls=1112888,usec=16171446,usec_per_call=14.53
+cmdstat_zrank:calls=1546039,usec=18602787,usec_per_call=12.03
+cmdstat_hset:calls=21461823,usec=180000403,usec_per_call=8.39
+cmdstat_hget:calls=38300423,usec=366495260,usec_per_call=9.57
+cmdstat_hmset:calls=1321111,usec=8019386,usec_per_call=6.07
+cmdstat_hincrby:calls=20788,usec=401768,usec_per_call=19.33
+cmdstat_hdel:calls=507451,usec=5527827,usec_per_call=10.89
+cmdstat_hvals:calls=97949,usec=54934448,usec_per_call=560.85
+cmdstat_hgetall:calls=1319718,usec=54923044,usec_per_call=41.62
+cmdstat_hexists:calls=10195025,usec=77384416,usec_per_call=7.59
+cmdstat_getset:calls=64,usec=554,usec_per_call=8.66
+cmdstat_keys:calls=747794,usec=1023622890,usec_per_call=1368.86
+cmdstat_ping:calls=1,usec=3,usec_per_call=3.00
+cmdstat_multi:calls=11576,usec=34138,usec_per_call=2.95
+cmdstat_exec:calls=11576,usec=14169299,usec_per_call=1224.02
+cmdstat_psync:calls=1,usec=17156,usec_per_call=17156.00
+cmdstat_replconf:calls=3214072,usec=9984316,usec_per_call=3.11
+cmdstat_flushall:calls=2,usec=4900109,usec_per_call=2450054.50
+cmdstat_info:calls=4,usec=358,usec_per_call=89.50
+
+# Keyspace
+db0:keys=11473,expires=9,avg_ttl=9558384
+hash_init_value: 1403795136
+
+[22926] 07 Aug 21:03:32.490 # --- CLIENT LIST OUTPUT
+[22926] 07 Aug 21:03:32.490 # addr=10.0.0.145:35227 fd=6 name= age=3218506 idle=0 flags=S db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=replconf
+addr=10.0.0.130:52490 fd=7 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=sadd
+
+[22926] 07 Aug 21:03:32.490 # --- CURRENT CLIENT INFO
+[22926] 07 Aug 21:03:32.490 # client: addr=10.0.0.130:52490 fd=7 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=sadd
+[22926] 07 Aug 21:03:32.490 # argv[0]: 'SADD'
+[22926] 07 Aug 21:03:32.490 # argv[1]: 'ids:List`1'
+[22926] 07 Aug 21:03:32.490 # argv[2]: '26092628'
+[22926] 07 Aug 21:03:32.490 # key 'ids:List`1' found in DB containing the following object:
+[22926] 07 Aug 21:03:32.490 # Object type: 2
+[22926] 07 Aug 21:03:32.490 # Object encoding: 2
+[22926] 07 Aug 21:03:32.490 # Object refcount: 1
+[22926] 07 Aug 21:03:32.490 # Set size: 4939668
+[22926] 07 Aug 21:03:32.490 # --- REGISTERS
+[22926] 07 Aug 21:03:32.490 # 
+RAX:00000000006d1880 RBX:00007f3d065637a0
+RCX:0000000000003500 RDX:0000000000000000
+RDI:00007f3cef400000 RSI:0000000000000003
+RBP:00007f3d35c14dc0 RSP:00007fff79e85080
+R8 :00000000e68e00d3 R9 :00007fff79e85044
+R10:0000000000000000 R11:0000000000000000
+R12:00007f3d35c14dc0 R13:0000000000000001
+R14:0000000000000002 R15:00007f3d08bd6a90
+RIP:00000000004192b6 EFL:0000000000010206
+CSGSFS:0000000000000033
+[22926] 07 Aug 21:03:32.490 # (00007fff79e8508f) -> 00000000004197ae
+[22926] 07 Aug 21:03:32.490 # (00007fff79e8508e) -> 00007f3d08bd6a90
+[22926] 07 Aug 21:03:32.490 # (00007fff79e8508d) -> 0000000000000002
+[22926] 07 Aug 21:03:32.490 # (00007fff79e8508c) -> 0000000000000010
+[22926] 07 Aug 21:03:32.490 # (00007fff79e8508b) -> 0000000000000000
+[22926] 07 Aug 21:03:32.490 # (00007fff79e8508a) -> 00007f3d039f1f50
+[22926] 07 Aug 21:03:32.490 # (00007fff79e85089) -> 00007f3d065637a0
+[22926] 07 Aug 21:03:32.490 # (00007fff79e85088) -> 0000000000000004
+[22926] 07 Aug 21:03:32.490 # (00007fff79e85087) -> 00000000004199b0
+[22926] 07 Aug 21:03:32.490 # (00007fff79e85086) -> 0000000000000004
+[22926] 07 Aug 21:03:32.490 # (00007fff79e85085) -> 0000000000419722
+[22926] 07 Aug 21:03:32.490 # (00007fff79e85084) -> 0000000000000000
+[22926] 07 Aug 21:03:32.490 # (00007fff79e85083) -> 00007f3ceb091150
+[22926] 07 Aug 21:03:32.490 # (00007fff79e85082) -> 00007f3d065637a0
+[22926] 07 Aug 21:03:32.490 # (00007fff79e85081) -> 00007f3d065637a0
+[22926] 07 Aug 21:03:32.490 # (00007fff79e85080) -> 00007f3ceb098670
+[22926] 07 Aug 21:03:32.490 # --- FAST MEMORY TEST
+[22926] 07 Aug 21:03:32.491 # Bio thread for job type #0 terminated
+[22926] 07 Aug 21:03:32.491 # Bio thread for job type #1 terminated
+[22926] 07 Aug 21:03:41.400 # Fast memory test PASSED, however your memory can still be broken. Please run a memory test for several hours if possible.
+[22926] 07 Aug 21:03:41.400 # 
+=== REDIS BUG REPORT END. Make sure to include from START to END. ===

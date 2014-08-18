@@ -1,0 +1,128 @@
+=== REDIS BUG REPORT START: Cut & paste starting from here ===
+[3489] 10 Sep 13:08:07.795 #     Redis 2.6.8 crashed by signal: 11
+[3489] 10 Sep 13:08:07.795 #     Failed assertion: <no assertion failed> (<no file>:0)
+[3489] 10 Sep 13:08:07.795 # --- STACK TRACE
+redis-server(logStackTrace+0x54)[0x43ba44]
+redis-server(redisLogHexDump+0x60)[0x43b970]
+/lib64/libpthread.so.0[0x3856c0eb10]
+redis-server(redisLogHexDump+0x60)[0x43b970]
+redis-server(hashTypeConvertZiplist+0xeb)[0x433b9b]
+redis-server(rdbLoadObject+0x265)[0x4299a5]
+redis-server(rdbLoad+0x1a1)[0x42a101]
+redis-server(loadDataFromDisk+0x1e)[0x41a21e]
+redis-server(main+0x35a)[0x41b41a]
+/lib64/libc.so.6(__libc_start_main+0xf4)[0x385601d994]
+redis-server[0x414469]
+[3489] 10 Sep 13:08:07.797 # --- INFO OUTPUT
+[3489] 10 Sep 13:08:07.797 # # Server
+redis_version:2.6.8
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_mode:standalone
+os:Linux 2.6.18-194.el5 x86_64
+arch_bits:64
+multiplexing_api:epoll
+gcc_version:4.1.2
+process_id:3489
+run_id:22f35958bf9191b51da0aa6e5ff0ae68dd2efcc8
+tcp_port:6379
+uptime_in_seconds:0
+uptime_in_days:0
+lru_clock:0
+
+# Clients
+connected_clients:0
+client_longest_output_list:0
+client_biggest_input_buf:0
+blocked_clients:0
+
+# Memory
+used_memory:789448
+used_memory_human:770.95K
+used_memory_rss:5705728
+used_memory_peak:788024
+used_memory_peak_human:769.55K
+used_memory_lua:31744
+mem_fragmentation_ratio:7.23
+mem_allocator:jemalloc-3.2.0
+
+# Persistence
+loading:1
+rdb_changes_since_last_save:0
+rdb_bgsave_in_progress:0
+rdb_last_save_time:1378818479
+rdb_last_bgsave_status:ok
+rdb_last_bgsave_time_sec:-1
+rdb_current_bgsave_time_sec:-1
+aof_enabled:0
+aof_rewrite_in_progress:0
+aof_rewrite_scheduled:0
+aof_last_rewrite_time_sec:-1
+aof_current_rewrite_time_sec:-1
+aof_last_bgrewrite_status:ok
+loading_start_time:1378818479
+loading_total_bytes:162852719
+loading_loaded_bytes:9
+loading_loaded_perc:0.00
+loading_eta_seconds:1
+
+# Stats
+total_connections_received:0
+total_commands_processed:0
+instantaneous_ops_per_sec:0
+rejected_connections:0
+expired_keys:0
+evicted_keys:0
+keyspace_hits:0
+keyspace_misses:0
+pubsub_channels:0
+pubsub_patterns:0
+latest_fork_usec:0
+
+# Replication
+role:master
+connected_slaves:0
+
+# CPU
+used_cpu_sys:0.05
+used_cpu_user:0.02
+used_cpu_sys_children:0.00
+used_cpu_user_children:0.00
+
+# Commandstats
+
+# Keyspace
+hash_init_value: 1378107671
+
+[3489] 10 Sep 13:08:07.797 # --- CLIENT LIST OUTPUT
+[3489] 10 Sep 13:08:07.797 # 
+[3489] 10 Sep 13:08:07.797 # --- REGISTERS
+[3489] 10 Sep 13:08:07.797 # 
+RAX:0000000000000000 RBX:00002b930c001000
+RCX:0000000000000000 RDX:00007fff2f8f03f0
+RDI:0000000000000000 RSI:0000000000000000
+RBP:00000000438469b5 RSP:00007fff2f8f03f0
+R8 :00000000ffffffff R9 :00000000ffffffff
+R10:0000000000000000 R11:0000000000000206
+R12:00007fff2f8f03f0 R13:0000000000000403
+R14:0000000000000003 R15:00002b930bd13300
+RIP:000000000043b970 EFL:0000000000010202
+CSGSFS:0000000000000033
+[3489] 10 Sep 13:08:07.797 # (00007fff2f8f0468) -> 00002b930bc11370
+[3489] 10 Sep 13:08:07.797 # (00007fff2f8f0460) -> 00002b930bc83ac0
+[3489] 10 Sep 13:08:07.797 # (00007fff2f8f0458) -> 0000000000000002
+[3489] 10 Sep 13:08:07.797 # (00007fff2f8f0450) -> 00002b930bc83a00
+[3489] 10 Sep 13:08:07.797 # (00007fff2f8f0448) -> 6665646362613938
+[3489] 10 Sep 13:08:07.797 # (00007fff2f8f0440) -> 3736353433323130
+[3489] 10 Sep 13:08:07.797 # (00007fff2f8f0438) -> 00002b930bd21140
+[3489] 10 Sep 13:08:07.797 # (00007fff2f8f0430) -> 0000000000000000
+[3489] 10 Sep 13:08:07.797 # (00007fff2f8f0428) -> 3030303030303030
+[3489] 10 Sep 13:08:07.797 # (00007fff2f8f0420) -> 3030303030303030
+[3489] 10 Sep 13:08:07.797 # (00007fff2f8f0418) -> 3030303030303030
+[3489] 10 Sep 13:08:07.797 # (00007fff2f8f0410) -> 3030303030303030
+[3489] 10 Sep 13:08:07.797 # (00007fff2f8f0408) -> 3030303030303030
+[3489] 10 Sep 13:08:07.797 # (00007fff2f8f0400) -> 3030303030303030
+[3489] 10 Sep 13:08:07.797 # (00007fff2f8f03f8) -> 3030303030303030
+[3489] 10 Sep 13:08:07.797 # (00007fff2f8f03f0) -> 3030303030303030
+[3489] 10 Sep 13:08:07.797 # 
+=== REDIS BUG REPORT END. Make sure to include from START to END. ===

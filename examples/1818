@@ -1,0 +1,131 @@
+=== REDIS BUG REPORT START: Cut & paste starting from here ===
+[1431] 17 Jun 04:07:02.306 #     Redis 2.8.4 crashed by signal: 11
+[1431] 17 Jun 04:07:02.306 #     Failed assertion: <no assertion failed> (<no file>:0)
+[1431] 17 Jun 04:07:02.306 # --- STACK TRACE
+0x4372e9 <???> at /usr/local/bin/redis-server
+0x800cd93f6 <_swapcontext+0x146> at /lib/libthr.so.3
+0x800cd8ff3 <sigaction+0x343> at /lib/libthr.so.3
+[1431] 17 Jun 04:07:02.388 # --- INFO OUTPUT
+[1431] 17 Jun 04:07:02.409 # # Server
+redis_version:2.8.4
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_build_id:8018abcaebb1e991
+redis_mode:standalone
+os:FreeBSD 10.0-RELEASE amd64
+arch_bits:64
+multiplexing_api:kqueue
+gcc_version:4.2.1
+process_id:1431
+run_id:fe5483af955f58dc0e86b9e098e0e422f89a250d
+tcp_port:6379
+uptime_in_seconds:4887024
+uptime_in_days:56
+hz:10
+lru_clock:1882530
+config_file:/usr/local/etc/redis.conf
+
+# Clients
+connected_clients:3
+client_longest_output_list:0
+client_biggest_input_buf:0
+blocked_clients:0
+
+# Memory
+used_memory:22534468240
+used_memory_human:20.99G
+used_memory_rss:22534468240
+used_memory_peak:22769855304
+used_memory_peak_human:21.21G
+used_memory_lua:33792
+mem_fragmentation_ratio:1.00
+mem_allocator:libc
+
+# Persistence
+loading:0
+rdb_changes_since_last_save:11467
+rdb_bgsave_in_progress:1
+rdb_last_save_time:1402945504
+rdb_last_bgsave_status:ok
+rdb_last_bgsave_time_sec:171
+rdb_current_bgsave_time_sec:1
+aof_enabled:0
+aof_rewrite_in_progress:0
+aof_rewrite_scheduled:0
+aof_last_rewrite_time_sec:-1
+aof_current_rewrite_time_sec:-1
+aof_last_bgrewrite_status:ok
+
+# Stats
+total_connections_received:858047
+total_commands_processed:795044463
+instantaneous_ops_per_sec:511
+rejected_connections:0
+sync_full:0
+sync_partial_ok:0
+sync_partial_err:0
+expired_keys:8
+evicted_keys:0
+keyspace_hits:654222753
+keyspace_misses:11957986
+pubsub_channels:0
+pubsub_patterns:0
+latest_fork_usec:1234081
+
+# Replication
+role:master
+connected_slaves:0
+master_repl_offset:0
+repl_backlog_active:0
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:0
+repl_backlog_histlen:0
+
+# CPU
+used_cpu_sys:94135.54
+used_cpu_user:41335.78
+used_cpu_sys_children:134390.02
+used_cpu_user_children:1715794.38
+
+# Commandstats
+cmdstat_get:calls=414014012,usec=1143262337,usec_per_call=2.76
+cmdstat_set:calls=786,usec=3600121,usec_per_call=4580.31
+cmdstat_del:calls=6859,usec=33356550,usec_per_call=4863.18
+cmdstat_zadd:calls=77393992,usec=15575586953,usec_per_call=201.25
+cmdstat_zremrangebyscore:calls=994818,usec=3752966873,usec_per_call=3772.52
+cmdstat_zrangebyscore:calls=3763011,usec=24429312184,usec_per_call=6491.96
+cmdstat_hmset:calls=48903265,usec=2214482668,usec_per_call=45.28
+cmdstat_hgetall:calls=248403559,usec=6325764605,usec_per_call=25.47
+cmdstat_select:calls=13,usec=71,usec_per_call=5.46
+cmdstat_expire:calls=155,usec=2359,usec_per_call=15.22
+cmdstat_keys:calls=1563983,usec=2978711044,usec_per_call=1904.57
+cmdstat_info:calls=6,usec=68121,usec_per_call=11353.50
+cmdstat_config:calls=2,usec=33368,usec_per_call=16684.00
+cmdstat_dump:calls=2,usec=12,usec_per_call=6.00
+
+# Keyspace
+db0:keys=1451,expires=87,avg_ttl=1981010117
+hash_init_value: 1398607035
+
+[1431] 17 Jun 04:07:02.409 # --- CLIENT LIST OUTPUT
+[1431] 17 Jun 04:07:02.409 # addr=127.0.0.1:27549 fd=5 name= age=4819802 idle=3 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=keys
+addr=127.0.0.1:14949 fd=7 name= age=118 idle=2 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=zadd
+addr=127.0.0.1:15431 fd=6 name= age=2 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=zremrangebyscore
+
+[1431] 17 Jun 04:07:02.409 # --- CURRENT CLIENT INFO
+[1431] 17 Jun 04:07:02.409 # client: addr=127.0.0.1:15431 fd=6 name= age=2 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=zremrangebyscore
+[1431] 17 Jun 04:07:02.409 # argv[0]: 'ZREMRANGEBYSCORE'
+[1431] 17 Jun 04:07:02.409 # argv[1]: 'srvstat:msk-vm-node-031.ispsystem.net'
+[1431] 17 Jun 04:07:02.409 # argv[2]: '0'
+[1431] 17 Jun 04:07:02.409 # argv[3]: '1402340820'
+[1431] 17 Jun 04:07:02.409 # key 'srvstat:msk-vm-node-031.ispsystem.net' found in DB containing the following object:
+[1431] 17 Jun 04:07:02.409 # Object type: 3
+[1431] 17 Jun 04:07:02.409 # Object encoding: 7
+[1431] 17 Jun 04:07:02.409 # Object refcount: 1
+[1431] 17 Jun 04:07:02.409 # Sorted set size: 17102
+[1431] 17 Jun 04:07:02.409 # Skiplist level: 8
+[1431] 17 Jun 04:07:02.409 # --- REGISTERS
+[1431] 17 Jun 04:07:02.409 #   Dumping of registers not supported for this OS/arch
+[1431] 17 Jun 04:07:02.410 # 
+=== REDIS BUG REPORT END. Make sure to include from START to END. ===
+

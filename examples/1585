@@ -1,0 +1,197 @@
+Hello ,
+we have 2 redis servers (version 2.8.6) and we use sentinel for failover . Yesterday redis went down and in the logs we had the following dump. What can cause this issue ? Also there is a strange behavior when we trigger keys expiration or deletion ( cpu stacks at 100% causing sentinel to promote the second server to master , which then stucks at 100% cpu. Is there any way to check what redis is trying to do at that  time to resolve this issue ? ) . Here is the dump : 
+=== REDIS BUG REPORT START: Cut & paste starting from here ===
+[14869] 06 Mar 19:01:05.681 #     Redis 2.8.6 crashed by signal: 11
+[14869] 06 Mar 19:01:05.681 #     Failed assertion: <no assertion failed> (<no file>:0)
+[14869] 06 Mar 19:01:05.681 # --- STACK TRACE
+/usr/local/bin/redis-server *:6379(logStackTrace+0x3e)[0x448c5e]
+/usr/local/bin/redis-server *:6379(evalGenericCommand+0x27f)[0x44d79f]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0xf030)[0x7f26bd542030]
+/usr/local/bin/redis-server *:6379(evalGenericCommand+0x27f)[0x44d79f]
+/usr/local/bin/redis-server *:6379(call+0x70)[0x41e450]
+/usr/local/bin/redis-server *:6379(processCommand+0x3bd)[0x42064d]
+/usr/local/bin/redis-server *:6379(processInputBuffer+0x51)[0x428d61]
+/usr/local/bin/redis-server *:6379(readQueryFromClient+0xb8)[0x428e88]
+/usr/local/bin/redis-server *:6379(aeProcessEvents+0x230)[0x419b70]
+/usr/local/bin/redis-server *:6379(aeMain+0x2b)[0x419dab]
+/usr/local/bin/redis-server *:6379(main+0x31d)[0x418aad]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xfd)[0x7f26bd1c6ead]
+/usr/local/bin/redis-server *:6379[0x418be9]
+[14869] 06 Mar 19:01:05.684 # --- INFO OUTPUT
+[14869] 06 Mar 19:01:05.684 # # Server
+redis_version:2.8.6
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_build_id:c2abcfde4cd7d9d0
+redis_mode:standalone
+os:Linux 3.2.0-4-amd64 x86_64
+arch_bits:64
+multiplexing_api:epoll
+gcc_version:4.7.2
+process_id:14869
+run_id:1e9b5475a0c6951884ea874c7772fc4fe7f2804a
+tcp_port:6379
+uptime_in_seconds:6602
+uptime_in_days:0
+hz:50
+lru_clock:1000491
+config_file:/etc/redis/redis-server.conf
+
+# Clients
+connected_clients:12
+client_longest_output_list:0
+client_biggest_input_buf:0
+blocked_clients:0
+
+# Memory
+used_memory:5561398832
+used_memory_human:5.18G
+used_memory_rss:6330540032
+used_memory_peak:5655784480
+used_memory_peak_human:5.27G
+used_memory_lua:112670720
+mem_fragmentation_ratio:1.14
+mem_allocator:jemalloc-3.2.0
+
+# Persistence
+loading:0
+rdb_changes_since_last_save:960798
+rdb_bgsave_in_progress:0
+rdb_last_save_time:1394124112
+rdb_last_bgsave_status:ok
+rdb_last_bgsave_time_sec:28
+rdb_current_bgsave_time_sec:-1
+aof_enabled:0
+aof_rewrite_in_progress:0
+aof_rewrite_scheduled:0
+aof_last_rewrite_time_sec:-1
+aof_current_rewrite_time_sec:-1
+aof_last_bgrewrite_status:ok
+aof_last_write_status:ok
+
+# Stats
+total_connections_received:589
+total_commands_processed:11174379
+instantaneous_ops_per_sec:468
+rejected_connections:0
+sync_full:0
+sync_partial_ok:0
+sync_partial_err:0
+expired_keys:4303
+evicted_keys:0
+keyspace_hits:1773982
+keyspace_misses:6557470
+pubsub_channels:0
+pubsub_patterns:0
+latest_fork_usec:90754
+
+# Replication
+role:master
+connected_slaves:0
+master_repl_offset:2834846535
+repl_backlog_active:0
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:0
+repl_backlog_histlen:0
+
+# CPU
+used_cpu_sys:51.40
+used_cpu_user:584.54
+used_cpu_sys_children:5.02
+used_cpu_user_children:60.93
+
+# Commandstats
+cmdstat_set:calls=825608,usec=1835408,usec_per_call=2.22
+cmdstat_setex:calls=48596,usec=313380,usec_per_call=6.45
+cmdstat_del:calls=529437,usec=8337948,usec_per_call=15.75
+cmdstat_mget:calls=68455,usec=2256504,usec_per_call=32.96
+cmdstat_sadd:calls=1594954,usec=4827195,usec_per_call=3.03
+cmdstat_srem:calls=1,usec=3909,usec_per_call=3909.00
+cmdstat_smembers:calls=270,usec=3174774,usec_per_call=11758.42
+cmdstat_zadd:calls=34990,usec=150731,usec_per_call=4.31
+cmdstat_zremrangebyscore:calls=34765,usec=114243,usec_per_call=3.29
+cmdstat_zremrangebyrank:calls=65,usec=849,usec_per_call=13.06
+cmdstat_zrange:calls=122,usec=13633,usec_per_call=111.75
+cmdstat_zrangebyscore:calls=4966,usec=526427,usec_per_call=106.01
+cmdstat_zrevrange:calls=1736,usec=16936,usec_per_call=9.76
+cmdstat_hset:calls=17356,usec=155305,usec_per_call=8.95
+cmdstat_hmset:calls=52,usec=133098,usec_per_call=2559.58
+cmdstat_hmget:calls=2412,usec=26198,usec_per_call=10.86
+cmdstat_hdel:calls=1,usec=6,usec_per_call=6.00
+cmdstat_hgetall:calls=50294,usec=523234,usec_per_call=10.40
+cmdstat_select:calls=15731,usec=38779,usec_per_call=2.47
+cmdstat_expire:calls=7759957,usec=4897575,usec_per_call=0.63
+cmdstat_keys:calls=4,usec=856341,usec_per_call=214085.25
+cmdstat_ping:calls=13226,usec=32736,usec_per_call=2.48
+cmdstat_type:calls=2,usec=8,usec_per_call=4.00
+cmdstat_multi:calls=78798,usec=59622,usec_per_call=0.76
+cmdstat_exec:calls=78798,usec=10537798,usec_per_call=133.73
+cmdstat_info:calls=2096,usec=539621,usec_per_call=257.45
+cmdstat_slaveof:calls=3,usec=218,usec_per_call=72.67
+cmdstat_config:calls=55,usec=7130,usec_per_call=129.64
+cmdstat_subscribe:calls=16,usec=89,usec_per_call=5.56
+cmdstat_publish:calls=11305,usec=105136,usec_per_call=9.30
+cmdstat_client:calls=25,usec=92,usec_per_call=3.68
+cmdstat_eval:calls=160,usec=29400502,usec_per_call=183753.14
+cmdstat_evalsha:calls=107,usec=446662388,usec_per_call=4174415.00
+cmdstat_script:calls=16,usec=347,usec_per_call=21.69
+
+# Keyspace
+db0:keys=2,expires=0,avg_ttl=0
+db1:keys=1802076,expires=745348,avg_ttl=70069658
+hash_init_value: 1393919841
+
+[14869] 06 Mar 19:01:05.684 # --- CLIENT LIST OUTPUT
+[14869] 06 Mar 19:01:05.684 # addr=127.0.0.1:53409 fd=16 name= age=5980 idle=5401 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=info
+addr=10.102.10.23:50392 fd=13 name=freemeteo.com@FMVP-WEBSRV-2 age=410 idle=0 flags=N db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=mget
+addr=10.102.10.22:59622 fd=15 name=freemeteo.com@FMVP-WEBSRV-1 age=410 idle=0 flags=N db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=mget
+addr=10.102.10.23:50418 fd=18 name=admin.freemeteo.com@FMVP-WEBSRV-2 age=355 idle=0 flags=N db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=mget
+addr=10.102.10.22:59630 fd=19 name=admin.freemeteo.com@FMVP-WEBSRV-1 age=355 idle=24 flags=N db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=mget
+addr=10.102.10.24:57484 fd=20 name=freemeteo.com@FMVP-WEBSRV-3 age=355 idle=0 flags=N db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=mget
+addr=10.102.10.24:57486 fd=21 name=admin.freemeteo.com@FMVP-WEBSRV-3 age=355 idle=24 flags=N db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=mget
+addr=10.102.10.25:52522 fd=23 name=freemeteo.com@FMVP-WEBSRV-4 age=355 idle=0 flags=N db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=mget
+addr=10.102.10.25:52523 fd=10 name=admin.freemeteo.com@FMVP-WEBSRV-4 age=355 idle=28 flags=N db=1 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=mget
+addr=10.102.10.54:56811 fd=8 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=89 oll=0 omem=0 events=rw cmd=info
+addr=10.102.10.55:46989 fd=7 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=89 oll=0 omem=0 events=rw cmd=info
+addr=10.102.10.55:47408 fd=6 name= age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=NULL
+
+[14869] 06 Mar 19:01:05.684 # --- REGISTERS
+[14869] 06 Mar 19:01:05.684 #
+RAX:00000144985ef73d RBX:00007f25c1fd7000
+RCX:000000000a0d312d RDX:000000000d312d24
+RDI:0000000001abd6a0 RSI:fffffffffffffff0
+RBP:0000000001abd6a0 RSP:00007fff9b02eb40
+R8 :0000000000000000 R9 :00007f26bd2cb660
+R10:00007fff9b02eaf0 R11:00007f26bd2fd610
+R12:0000000000000001 R13:00007fff9b02eb50
+R14:0000000000000000 R15:0004f3f3137d0312
+RIP:000000000044d79f EFL:0000000000010202
+CSGSFS:0000000000000033
+[14869] 06 Mar 19:01:05.684 # (00007fff9b02eb4f) -> 00007f25c1fd7000
+[14869] 06 Mar 19:01:05.684 # (00007fff9b02eb4e) -> 00007f2560c7bc78
+[14869] 06 Mar 19:01:05.684 # (00007fff9b02eb4d) -> 000000000041e450
+[14869] 06 Mar 19:01:05.684 # (00007fff9b02eb4c) -> 00000000000557ef
+[14869] 06 Mar 19:01:05.684 # (00007fff9b02eb4b) -> 0000000000000000
+[14869] 06 Mar 19:01:05.684 # (00007fff9b02eb4a) -> 0000000000004000
+[14869] 06 Mar 19:01:05.685 # (00007fff9b02eb49) -> 0000000000000007
+[14869] 06 Mar 19:01:05.686 # (00007fff9b02eb48) -> 00007f25c1fd7000
+[14869] 06 Mar 19:01:05.687 # (00007fff9b02eb47) -> 00007f26bd006166
+[14869] 06 Mar 19:01:05.688 # (00007fff9b02eb46) -> 3634623232643536
+[14869] 06 Mar 19:01:05.689 # (00007fff9b02eb45) -> 3037303133636664
+[14869] 06 Mar 19:01:05.689 # (00007fff9b02eb44) -> 6438336338643339
+[14869] 06 Mar 19:01:05.690 # (00007fff9b02eb43) -> 3661333836623764
+[14869] 06 Mar 19:01:05.691 # (00007fff9b02eb42) -> 3332323136375f66
+[14869] 06 Mar 19:01:05.692 # (00007fff9b02eb41) -> 0000000000000001
+[14869] 06 Mar 19:01:05.693 # (00007fff9b02eb40) -> 00007fff9b02eb90
+[14869] 06 Mar 19:01:05.693 # --- FAST MEMORY TEST
+[14869] 06 Mar 19:01:05.694 # Bio thread for job type #0 terminated
+[14869] 06 Mar 19:01:05.695 # Bio thread for job type #1 terminated
+[14869] 06 Mar 19:02:00.897 # Fast memory test PASSED, however your memory can still be broken. Please run a memory test for several hours if possible.
+[14869] 06 Mar 19:02:00.898 #
+=== REDIS BUG REPORT END. Make sure to include from START to END. ===
+
+       Please report the crash opening an issue on github:
+
+           http://github.com/antirez/redis/issues
+
+  Suspect RAM error? Use redis-server --test-memory to veryfy it.
