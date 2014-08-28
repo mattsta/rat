@@ -1,0 +1,556 @@
+=== REDIS BUG REPORT START: Cut & paste starting from here ===
+[53329] 27 Aug 22:41:55.896 #     Redis 2.8.11 crashed by signal: 10
+[53329] 27 Aug 22:41:55.896 #     Failed assertion: <no assertion failed> (<no file>:0)
+[53329] 27 Aug 22:41:55.896 # --- STACK TRACE
+0x438e69 <???> at /usr/local/bin/redis-server
+0x800cde3f6 <_swapcontext+0x146> at /lib/libthr.so.3
+0x800cddff3 <sigaction+0x343> at /lib/libthr.so.3
+[53329] 27 Aug 22:41:55.896 # --- INFO OUTPUT
+[53329] 27 Aug 22:41:55.896 # # Server
+redis_version:2.8.11
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_build_id:f39ae43253ae7299
+redis_mode:standalone
+os:FreeBSD 10.0-RELEASE amd64
+arch_bits:64
+multiplexing_api:kqueue
+gcc_version:4.2.1
+process_id:53329
+run_id:aa972c1eec3171842dc0c0da3e2018e7a81d15ff
+tcp_port:6382
+uptime_in_seconds:523500
+uptime_in_days:6
+hz:100
+lru_clock:16655987
+config_file:/usr/local/etc/redis-db.conf
+
+# Clients
+connected_clients:384
+client_longest_output_list:0
+client_biggest_input_buf:0
+blocked_clients:0
+
+# Memory
+used_memory:4300974752
+used_memory_human:4.01G
+used_memory_rss:4301006272
+used_memory_peak:4302527456
+used_memory_peak_human:4.01G
+used_memory_lua:81920
+mem_fragmentation_ratio:1.00
+mem_allocator:libc
+
+# Persistence
+loading:0
+rdb_changes_since_last_save:18228
+rdb_bgsave_in_progress:1
+rdb_last_save_time:1409164853
+rdb_last_bgsave_status:ok
+rdb_last_bgsave_time_sec:37
+rdb_current_bgsave_time_sec:1
+aof_enabled:1
+aof_rewrite_in_progress:0
+aof_rewrite_scheduled:0
+aof_last_rewrite_time_sec:17
+aof_current_rewrite_time_sec:-1
+aof_last_bgrewrite_status:ok
+aof_last_write_status:ok
+aof_current_size:3855656876
+aof_base_size:2677605745
+aof_pending_rewrite:0
+aof_buffer_length:0
+aof_rewrite_buffer_length:0
+aof_pending_bio_fsync:0
+aof_delayed_fsync:0
+
+# Stats
+total_connections_received:3401
+total_commands_processed:312334133
+instantaneous_ops_per_sec:1003
+rejected_connections:0
+sync_full:2
+sync_partial_ok:1
+sync_partial_err:0
+expired_keys:0
+evicted_keys:0
+keyspace_hits:104995545
+keyspace_misses:53798056
+pubsub_channels:1
+pubsub_patterns:0
+latest_fork_usec:406808
+
+# Replication
+role:master
+connected_slaves:0
+master_repl_offset:985094855
+repl_backlog_active:0
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:984046280
+repl_backlog_histlen:1048576
+
+# CPU
+used_cpu_sys:21842.32
+used_cpu_user:3752.93
+used_cpu_sys_children:16340.28
+used_cpu_user_children:124052.69
+
+# Commandstats
+cmdstat_get:calls=79240622,usec=1558576911,usec_per_call=19.67
+cmdstat_set:calls=1858234,usec=157130086,usec_per_call=84.56
+cmdstat_del:calls=279767,usec=135528761,usec_per_call=484.43
+cmdstat_incr:calls=20827,usec=4194087,usec_per_call=201.38
+cmdstat_decr:calls=3251,usec=967372,usec_per_call=297.56
+cmdstat_mget:calls=3302,usec=262883,usec_per_call=79.61
+cmdstat_rpush:calls=230188,usec=27808861,usec_per_call=120.81
+cmdstat_lpush:calls=20790822,usec=3052908840,usec_per_call=146.84
+cmdstat_llen:calls=36669096,usec=1003274158,usec_per_call=27.36
+cmdstat_lrange:calls=36881025,usec=246155511,usec_per_call=6.67
+cmdstat_ltrim:calls=20784777,usec=1035365286,usec_per_call=49.81
+cmdstat_lrem:calls=20784777,usec=3979855091,usec_per_call=191.48
+cmdstat_sadd:calls=21339,usec=7390683,usec_per_call=346.35
+cmdstat_srem:calls=3253,usec=625312,usec_per_call=192.23
+cmdstat_sismember:calls=5563984,usec=115014466,usec_per_call=20.67
+cmdstat_scard:calls=575,usec=4342,usec_per_call=7.55
+cmdstat_smembers:calls=399729,usec=52222964,usec_per_call=130.65
+cmdstat_zadd:calls=67,usec=1039,usec_per_call=15.51
+cmdstat_zrem:calls=64,usec=327,usec_per_call=5.11
+cmdstat_zremrangebyscore:calls=23,usec=157,usec_per_call=6.83
+cmdstat_zrange:calls=1,usec=4,usec_per_call=4.00
+cmdstat_zrangebyscore:calls=244,usec=14135,usec_per_call=57.93
+cmdstat_zrevrangebyscore:calls=49,usec=220,usec_per_call=4.49
+cmdstat_hset:calls=60,usec=765,usec_per_call=12.75
+cmdstat_hget:calls=2,usec=28,usec_per_call=14.00
+cmdstat_hlen:calls=60,usec=38,usec_per_call=0.63
+cmdstat_hgetall:calls=31230,usec=725526,usec_per_call=23.23
+cmdstat_select:calls=42179044,usec=71794657,usec_per_call=1.70
+cmdstat_ping:calls=1921174,usec=3382105,usec_per_call=1.76
+cmdstat_echo:calls=3353,usec=1143,usec_per_call=0.34
+cmdstat_type:calls=1,usec=4,usec_per_call=4.00
+cmdstat_multi:calls=61,usec=76,usec_per_call=1.25
+cmdstat_exec:calls=61,usec=2593,usec_per_call=42.51
+cmdstat_psync:calls=3,usec=175636,usec_per_call=58545.33
+cmdstat_replconf:calls=58674,usec=55388,usec_per_call=0.94
+cmdstat_info:calls=2144,usec=117861,usec_per_call=54.97
+cmdstat_slaveof:calls=2,usec=186,usec_per_call=93.00
+cmdstat_config:calls=5004,usec=68674,usec_per_call=13.72
+cmdstat_subscribe:calls=1686,usec=46235,usec_per_call=27.42
+cmdstat_unsubscribe:calls=2410951,usec=97035408,usec_per_call=40.25
+cmdstat_psubscribe:calls=1,usec=2,usec_per_call=2.00
+cmdstat_client:calls=3353,usec=5053,usec_per_call=1.51
+cmdstat_eval:calls=1429,usec=877294,usec_per_call=613.92
+cmdstat_evalsha:calls=42178418,usec=15979335612,usec_per_call=378.85
+cmdstat_slowlog:calls=2,usec=38,usec_per_call=19.00
+cmdstat_script:calls=1404,usec=11124,usec_per_call=7.92
+
+# Keyspace
+db0:keys=952213,expires=0,avg_ttl=0
+hash_init_value: 1408784733
+
+[53329] 27 Aug 22:41:55.896 # --- CLIENT LIST OUTPUT
+[53329] 27 Aug 22:41:55.898 # addr=127.0.0.1:15531 fd=309 name=WEB801 age=17755 idle=5 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:15532 fd=311 name=WEB801 age=17755 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:11271 fd=55 name=WEB407 age=25212 idle=19 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:52414 fd=35 name=WEBSEC102 age=67347 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:52415 fd=133 name=WEBSEC102 age=67347 idle=23 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22813 fd=171 name=WEB607 age=470150 idle=15 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:36215 fd=326 name=WEBKZ201 age=446133 idle=24 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:36216 fd=332 name=WEBKZ201 age=446133 idle=24 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22817 fd=207 name=WEB603 age=470150 idle=30 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11745 fd=89 name=WEB802 age=24388 idle=26 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11746 fd=90 name=WEB802 age=24388 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:52112 fd=240 name=WEBSEC202 age=67889 idle=3 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=rpush
+addr=127.0.0.1:52113 fd=241 name=WEBSEC202 age=67889 idle=37 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22818 fd=262 name=WEB603 age=470150 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:62825 fd=117 name=WEB1006 age=48680 idle=11 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11274 fd=59 name=WEB405 age=25212 idle=4 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11275 fd=60 name=WEB405 age=25212 idle=4 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:62826 fd=118 name=WEB1006 age=48680 idle=11 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:21876 fd=95 name=WEB502 age=471231 idle=32 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:60506 fd=236 name=WEB702 age=52770 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:60507 fd=237 name=WEB702 age=52770 idle=36 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:31509 fd=212 name=WEBAPI201 age=105053 idle=2 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:21877 fd=96 name=WEB502 age=471231 idle=32 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:22441 fd=376 name=WEBBY205 age=121431 idle=26 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:15835 fd=378 name=WEBBY101 age=17219 idle=11 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:15836 fd=379 name=WEBBY101 age=17219 idle=11 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:9991 fd=180 name=WEB207 age=27515 idle=18 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:9992 fd=216 name=WEB207 age=27515 idle=18 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11273 fd=58 name=WEB408 age=25212 idle=9 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22442 fd=377 name=WEBBY205 age=121431 idle=26 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:60503 fd=79 name=WEB704 age=52772 idle=37 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:60504 fd=82 name=WEB704 age=52772 idle=37 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:18394 fd=8 name=WEBKZ102 age=128484 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:18395 fd=9 name=WEBKZ102 age=128484 idle=14 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:21815 fd=38 name=WEB508 age=471232 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:21816 fd=39 name=WEB508 age=471232 idle=4 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22015 fd=228 name=WEB506 age=471231 idle=32 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11244 fd=299 name=WEB407 age=25240 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:11245 fd=300 name=WEB407 age=25240 idle=4 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:53958 fd=44 name=WEB707 age=64577 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:61588 fd=120 name=WEB305 age=50876 idle=20 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:61589 fd=121 name=WEB305 age=50876 idle=20 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:53959 fd=45 name=WEB707 age=64577 idle=20 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:52087 fd=221 name=WEBSEC201 age=67920 idle=6 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=rpush
+addr=127.0.0.1:52088 fd=227 name=WEBSEC201 age=67920 idle=28 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22016 fd=229 name=WEB506 age=471231 idle=32 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11753 fd=152 name=WEB802 age=24385 idle=29 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:15703 fd=371 name=WEBBY202 age=17475 idle=2 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:15704 fd=373 name=WEBBY202 age=17475 idle=2 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:14123 fd=30 name=WEBBY104 age=20187 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:14124 fd=31 name=WEBBY104 age=20187 idle=8 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:54022 fd=197 name=WEB705 age=64484 idle=34 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11270 fd=50 name=WEB407 age=25212 idle=19 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:56300 fd=234 name=SERVICES age=60379 idle=27 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:62407 fd=249 name=WEB108 age=49422 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:11243 fd=298 name=WEB404 age=25240 idle=31 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:62408 fd=255 name=WEB108 age=49422 idle=39 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:56301 fd=235 name=SERVICES age=60379 idle=27 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:31504 fd=179 name=WEBAPI201 age=105055 idle=0 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:31505 fd=188 name=WEBAPI201 age=105055 idle=17 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:11249 fd=327 name=WEB408 age=25239 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:11250 fd=364 name=WEB408 age=25239 idle=40 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:62824 fd=112 name=WEB1005 age=48681 idle=13 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:54319 fd=51 name=WEB706 age=63949 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:54320 fd=52 name=WEB706 age=63949 idle=1 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:31508 fd=189 name=WEBAPI201 age=105053 idle=15 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:18916 fd=370 name=WEBKZ103 age=127631 idle=10 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:18917 fd=372 name=WEBKZ103 age=127631 idle=10 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:54244 fd=74 name=WEB104 age=64096 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:12324 fd=245 name=WEB000 age=23420 idle=20 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:12325 fd=246 name=WEB000 age=23420 idle=20 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:54245 fd=85 name=WEB104 age=64096 idle=5 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:60496 fd=242 name=WEB703 age=52778 idle=3 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:61473 fd=256 name=WEB204 age=51070 idle=9 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:61469 fd=217 name=WEB201 age=51073 idle=9 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:60497 fd=243 name=WEB703 age=52778 idle=3 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:52486 fd=139 name=SERVICES age=67234 idle=29 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11272 fd=57 name=WEB408 age=25212 idle=9 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:58173 fd=190 name=WEBJOB101 age=57040 idle=16 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:58174 fd=191 name=WEBJOB101 age=57040 idle=16 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:54201 fd=173 name=WEB101 age=64173 idle=21 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:54202 fd=174 name=WEB101 age=64173 idle=21 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:36806 fd=261 name=WEB501 age=445095 idle=22 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11717 fd=80 name=WEB406 age=24437 idle=28 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:12239 fd=230 name=WEB000 age=23562 idle=24 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11718 fd=81 name=WEB406 age=24437 idle=28 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:62399 fd=172 name=WEB106 age=49426 idle=20 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:52628 fd=146 name=SERVICES age=66983 idle=18 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:52629 fd=147 name=SERVICES age=66983 idle=18 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:12235 fd=226 name=WEB000 age=23565 idle=0 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:52085 fd=204 name=WEBSEC203 age=67920 idle=22 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:52086 fd=205 name=WEBSEC203 age=67920 idle=7 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=rpush
+addr=127.0.0.1:31920 fd=119 name=WEBAPI203 age=104337 idle=15 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:31921 fd=122 name=WEBAPI203 age=104337 idle=28 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11752 fd=151 name=WEB802 age=24385 idle=29 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:16543 fd=247 name=WEB503 age=15938 idle=9 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:16544 fd=250 name=WEB503 age=15938 idle=9 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:36807 fd=317 name=WEB501 age=445095 idle=22 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11762 fd=192 name=WEB804 age=24379 idle=26 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11763 fd=196 name=WEB804 age=24379 idle=26 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:36180 fd=323 name=WEBKZ203 age=446186 idle=15 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:36181 fd=324 name=WEBKZ203 age=446186 idle=15 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:62821 fd=23 name=WEB1003 age=48681 idle=11 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:62822 fd=104 name=WEB1003 age=48681 idle=11 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:62823 fd=110 name=WEB1005 age=48681 idle=13 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:61470 fd=244 name=WEB205 age=51070 idle=8 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:61471 fd=248 name=WEB205 age=51070 idle=8 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:25322 fd=287 name=WEB902 age=466240 idle=28 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:25323 fd=316 name=WEB902 age=466240 idle=28 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:52489 fd=140 name=SERVICES age=67231 idle=26 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:52490 fd=141 name=SERVICES age=67231 idle=26 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:61472 fd=253 name=WEB204 age=51070 idle=9 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:61464 fd=130 name=WEB208 age=51076 idle=14 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:61465 fd=144 name=WEB208 age=51076 idle=14 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:18401 fd=278 name=WEBKZ103 age=128478 idle=4 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:3466 fd=294 name=WEB601 age=272593 idle=11 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:52485 fd=138 name=SERVICES age=67234 idle=29 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:3467 fd=295 name=WEB601 age=272593 idle=11 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:3173 fd=183 name=WEB605 age=273105 idle=4 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:3174 fd=206 name=WEB605 age=273105 idle=4 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:25336 fd=419 name=WEB903 age=466233 idle=21 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:61575 fd=56 name=WEB303 age=50878 idle=20 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:61576 fd=61 name=WEB303 age=50878 idle=20 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:25337 fd=420 name=WEB903 age=466233 idle=21 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:56298 fd=232 name=SERVICES age=60379 idle=29 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:56299 fd=233 name=SERVICES age=60379 idle=29 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:62398 fd=170 name=WEB106 age=49426 idle=20 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:61446 fd=46 name=WEB206 age=51093 idle=32 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:61447 fd=47 name=WEB206 age=51093 idle=32 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:62087 fd=268 name=SERVICES age=50003 idle=33 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:62088 fd=270 name=SERVICES age=50003 idle=33 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22424 fd=312 name=WEBBY201 age=121461 idle=30 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:54004 fd=175 name=WEBAPI103 age=64513 idle=27 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:54005 fd=184 name=WEBAPI103 age=64513 idle=27 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22425 fd=314 name=WEBBY201 age=121461 idle=30 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:25352 fd=421 name=WEB907 age=466214 idle=15 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:25353 fd=422 name=WEB907 age=466214 idle=15 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:22005 fd=218 name=WEB02 age=471231 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:22006 fd=219 name=WEB02 age=471231 idle=0 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:61462 fd=123 name=WEB202 age=51077 idle=13 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11242 fd=297 name=WEB404 age=25240 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:21635 fd=126 name=WEBKZ01 age=6865 idle=10 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:61463 fd=124 name=WEB202 age=51077 idle=13 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:10859 fd=285 name=WEBJOB201 age=25932 idle=16 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:10860 fd=288 name=WEBJOB201 age=25932 idle=16 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:25331 fd=417 name=WEB905 age=466237 idle=32 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:25332 fd=418 name=WEB905 age=466237 idle=32 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:22955 fd=325 name=WEB603 age=469932 idle=10 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22960 fd=336 name=WEB602 age=469919 idle=27 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:15334 fd=28 name=WEBBY101 age=18096 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=set
+addr=127.0.0.1:15335 fd=29 name=WEBBY101 age=18096 idle=32 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22961 fd=342 name=WEB602 age=469919 idle=27 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:50514 fd=276 name=WEBAPI202 age=70759 idle=5 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11766 fd=303 name=WEB805 age=24371 idle=25 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11767 fd=304 name=WEB805 age=24371 idle=25 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11760 fd=186 name=WEB804 age=24380 idle=32 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11761 fd=187 name=WEB804 age=24380 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:15339 fd=177 name=WEBBY102 age=18090 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:15340 fd=178 name=WEBBY102 age=18090 idle=27 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:50515 fd=279 name=WEBAPI202 age=70759 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:19952 fd=337 name=WEBBY205 age=125785 idle=36 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:19953 fd=338 name=WEBBY205 age=125785 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=set
+addr=127.0.0.1:18400 fd=277 name=WEBKZ103 age=128478 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:22958 fd=334 name=WEB604 age=469920 idle=25 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:3190 fd=290 name=WEB504 age=273091 idle=11 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:54006 fd=185 name=WEBAPI102 age=64513 idle=26 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:54076 fd=156 name=WEB103 age=64405 idle=15 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:13750 fd=352 name=SERVICES age=20859 idle=9 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:13751 fd=353 name=SERVICES age=20859 idle=9 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:54077 fd=157 name=WEB103 age=64405 idle=15 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11765 fd=302 name=WEB805 age=24372 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:54631 fd=223 name=WEB701 age=63400 idle=11 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:54632 fd=231 name=WEB701 age=63400 idle=11 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:54007 fd=194 name=WEBAPI102 age=64513 idle=26 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:3191 fd=291 name=WEB504 age=273091 idle=11 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:25320 fd=283 name=WEB901 age=466240 idle=23 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:52626 fd=142 name=SERVICES age=66983 idle=19 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:52627 fd=145 name=SERVICES age=66983 idle=19 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:62389 fd=86 name=WEB102 age=49429 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:62390 fd=87 name=WEB102 age=49429 idle=0 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:25321 fd=286 name=WEB901 age=466240 idle=23 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:15444 fd=320 name=WEBBY204 age=17910 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:15445 fd=321 name=WEBBY204 age=17910 idle=39 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:54322 fd=211 name=WEB706 age=63948 idle=16 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:54323 fd=215 name=WEB706 age=63948 idle=16 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:14278 fd=362 name=WEBBY105 age=19955 idle=14 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:14279 fd=366 name=WEBBY105 age=19955 idle=14 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:3021 fd=251 name=WEB505 age=273343 idle=29 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:18402 fd=280 name=WEBKZ101 age=128476 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:14131 fd=176 name=WEBBY103 age=20185 idle=5 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:18403 fd=281 name=WEBKZ101 age=128476 idle=40 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:3022 fd=252 name=WEB505 age=273343 idle=29 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22959 fd=335 name=WEB604 age=469920 idle=25 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:35881 fd=160 name=WEBKZ202 age=446731 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:35882 fd=161 name=WEBKZ202 age=446731 idle=16 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:60493 fd=53 name=WEB703 age=52779 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:60494 fd=54 name=WEB703 age=52779 idle=8 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22954 fd=322 name=WEB603 age=469932 idle=10 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:31968 fd=193 name=WEBAPI203 age=104262 idle=39 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:31969 fd=201 name=WEBAPI203 age=104262 idle=30 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:9868 fd=101 name=WEB201 age=27721 idle=9 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:18856 fd=365 name=WEBKZ101 age=127723 idle=22 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:21630 fd=125 name=WEBKZ01 age=6867 idle=14 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:18857 fd=367 name=WEBKZ101 age=127723 idle=22 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:18867 fd=368 name=WEBKZ102 age=127710 idle=13 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:22426 fd=361 name=WEBBY203 age=121459 idle=32 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22427 fd=363 name=WEBBY203 age=121459 idle=32 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:18868 fd=369 name=WEBKZ102 age=127710 idle=13 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:52425 fd=136 name=WEBSEC103 age=67341 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=llen
+addr=127.0.0.1:63715 fd=282 name=SERVICES age=47064 idle=15 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:63716 fd=284 name=SERVICES age=47064 idle=15 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:52426 fd=137 name=WEBSEC103 age=67341 idle=16 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:3180 fd=208 name=WEB504 age=273099 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:3181 fd=209 name=WEB504 age=273099 idle=7 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22811 fd=129 name=WEB606 age=470150 idle=32 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:54627 fd=6 name=WEB701 age=63402 idle=15 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:54628 fd=11 name=WEB701 age=63402 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:13748 fd=220 name=SERVICES age=20859 idle=14 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:13749 fd=222 name=SERVICES age=20859 idle=14 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:54246 fd=164 name=WEB104 age=64082 idle=5 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:54247 fd=169 name=WEB104 age=64082 idle=5 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11802 fd=307 name=WEB807 age=24315 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:11803 fd=308 name=WEB807 age=24315 idle=18 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:53863 fd=128 name=WEBAPI101 age=64734 idle=5 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11764 fd=301 name=WEB805 age=24372 idle=28 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:53864 fd=143 name=WEBAPI101 age=64734 idle=5 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22812 fd=163 name=WEB606 age=470150 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:22807 fd=84 name=WEB602 age=470151 idle=14 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:53939 fd=75 name=WEB107 age=64604 idle=19 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:53940 fd=76 name=WEB107 age=64604 idle=19 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:52421 fd=134 name=WEBSEC101 age=67344 idle=11 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=rpush
+addr=127.0.0.1:52422 fd=135 name=WEBSEC101 age=67344 idle=20 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:62086 fd=267 name=SERVICES age=50003 idle=33 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22808 fd=107 name=WEB602 age=470151 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:22057 fd=269 name=WEB502 age=471231 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:25327 fd=415 name=WEB906 age=466239 idle=2 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:3118 fd=88 name=WEB507 age=273204 idle=33 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:3119 fd=91 name=WEB507 age=273204 idle=33 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:14130 fd=166 name=WEBBY103 age=20185 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:25328 fd=416 name=WEB906 age=466239 idle=2 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:25324 fd=413 name=WEB904 age=466239 idle=23 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:61453 fd=102 name=WEB203 age=51087 idle=28 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:62819 fd=7 name=WEB1001 age=48681 idle=13 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:15575 fd=374 name=WEB01 age=17696 idle=13 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:15576 fd=375 name=WEB01 age=17696 idle=13 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:62820 fd=22 name=WEB1001 age=48681 idle=13 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:62405 fd=203 name=WEB105 age=49423 idle=10 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11268 fd=48 name=WEB404 age=25213 idle=39 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11269 fd=49 name=WEB404 age=25213 idle=39 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:62406 fd=210 name=WEB105 age=49423 idle=10 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:61454 fd=103 name=WEB203 age=51087 idle=28 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:25325 fd=414 name=WEB904 age=466239 idle=23 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:21878 fd=97 name=WEB03 age=471231 idle=3 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:17935 fd=224 name=ADMINKA2012 age=13480 idle=30 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:17936 fd=225 name=ADMINKA2012 age=13480 idle=14 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:61578 fd=62 name=WEB302 age=50877 idle=19 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11807 fd=329 name=WEB806 age=24303 idle=8 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:61579 fd=63 name=WEB302 age=50877 idle=19 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11697 fd=66 name=WEB406 age=24466 idle=15 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:21879 fd=98 name=WEB03 age=471231 idle=3 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:31517 fd=213 name=WEBAPI202 age=105045 idle=32 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:62392 fd=92 name=WEB106 age=49429 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:62393 fd=116 name=WEB106 age=49429 idle=19 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11750 fd=93 name=WEB803 age=24386 idle=29 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11751 fd=94 name=WEB803 age=24386 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:54064 fd=12 name=WEB103 age=64418 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:54065 fd=13 name=WEB103 age=64418 idle=9 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11247 fd=305 name=WEB405 age=25239 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:11248 fd=306 name=WEB405 age=25239 idle=32 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:61598 fd=257 name=WEB306 age=50870 idle=10 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:61599 fd=258 name=WEB306 age=50870 idle=10 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11239 fd=293 name=WEB401 age=25241 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:11240 fd=296 name=WEB401 age=25241 idle=33 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11757 fd=154 name=WEB803 age=24384 idle=22 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11758 fd=155 name=WEB803 age=24384 idle=22 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:31518 fd=214 name=WEBAPI202 age=105045 idle=1 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:50512 fd=272 name=WEBAPI203 age=70760 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:61584 fd=109 name=WEB304 age=50876 idle=20 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:61585 fd=111 name=WEB304 age=50876 idle=20 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:50513 fd=273 name=WEBAPI203 age=70760 idle=8 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22962 fd=346 name=WEB607 age=469918 idle=29 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:14127 fd=150 name=WEBBY105 age=20186 idle=3 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22963 fd=348 name=WEB607 age=469918 idle=29 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:3111 fd=40 name=WEB507 age=273209 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:62827 fd=131 name=WEB1002 age=48680 idle=12 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:62828 fd=132 name=WEB1002 age=48680 idle=12 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:62829 fd=159 name=WEB1004 age=48680 idle=14 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:62830 fd=165 name=WEB1004 age=48680 idle=14 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11819 fd=339 name=WEB806 age=24291 idle=35 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11820 fd=345 name=WEB806 age=24291 idle=35 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:3112 fd=43 name=WEB507 age=273209 idle=36 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:54198 fd=24 name=WEB101 age=64175 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:54199 fd=32 name=WEB101 age=64175 idle=23 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:52427 fd=10 name=WEBBY11 age=67327 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:52428 fd=34 name=WEBBY11 age=67327 idle=0 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22809 fd=108 name=WEB604 age=470150 idle=35 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:60501 fd=21 name=WEB704 age=52773 idle=38 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22810 fd=127 name=WEB604 age=470150 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:53960 fd=148 name=WEB707 age=64572 idle=38 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:53961 fd=153 name=WEB707 age=64572 idle=38 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:53935 fd=27 name=WEB107 age=64606 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:53936 fd=33 name=WEB107 age=64606 idle=33 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:62085 fd=263 name=SERVICES age=50003 idle=33 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:22814 fd=182 name=WEB607 age=470150 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:21813 fd=36 name=WEB508 age=471232 idle=4 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:21814 fd=37 name=WEB508 age=471232 idle=4 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11806 fd=319 name=WEB806 age=24303 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:13683 fd=349 name=ADMINKA2008 age=20978 idle=28 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:13684 fd=351 name=ADMINKA2008 age=20978 idle=34 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:15452 fd=354 name=WEBBY204 age=17905 idle=36 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:15453 fd=355 name=WEBBY204 age=17905 idle=36 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:3018 fd=69 name=WEB505 age=273345 idle=13 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:62395 fd=158 name=WEB102 age=49427 idle=39 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:62396 fd=162 name=WEB102 age=49427 idle=39 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:11232 fd=289 name=WEB402 age=25247 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:11696 fd=65 name=WEB406 age=24466 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:11233 fd=292 name=WEB402 age=25247 idle=7 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22052 fd=264 name=WEB502 age=471231 idle=7 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:22956 fd=328 name=WEB606 age=469928 idle=16 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11256 fd=25 name=WEB402 age=25229 idle=32 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11257 fd=26 name=WEB402 age=25229 idle=32 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:15701 fd=340 name=WEBBY202 age=17478 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:15702 fd=341 name=WEBBY202 age=17478 idle=6 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:36237 fd=343 name=WEBKZ202 age=446093 idle=15 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:36238 fd=350 name=WEBKZ202 age=446093 idle=15 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:22957 fd=331 name=WEB606 age=469928 idle=16 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:21953 fd=167 name=WEB506 age=471231 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:15844 fd=380 name=WEBBY102 age=17213 idle=38 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:15845 fd=381 name=WEBBY102 age=17213 idle=38 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:19956 fd=344 name=WEBBY203 age=125784 idle=35 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:19957 fd=347 name=WEBBY203 age=125784 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:61580 fd=72 name=WEB301 age=50876 idle=19 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11266 fd=41 name=WEB401 age=25214 idle=7 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11267 fd=42 name=WEB401 age=25214 idle=7 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:61581 fd=73 name=WEB301 age=50876 idle=19 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:14126 fd=149 name=WEBBY105 age=20186 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:36535 fd=115 name=WEB501 age=445561 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:63713 fd=274 name=SERVICES age=47064 idle=16 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:63714 fd=275 name=SERVICES age=47064 idle=16 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:36536 fd=254 name=WEB501 age=445561 idle=36 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:35870 fd=15 name=WEBKZ203 age=446740 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:61582 fd=105 name=WEB308 age=50876 idle=18 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:61583 fd=106 name=WEB308 age=50876 idle=18 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:3170 fd=19 name=WEB605 age=273108 idle=40 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:31726 fd=67 name=WEBAPI202 age=104683 idle=11 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:14269 fd=358 name=WEBBY103 age=19963 idle=34 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:14270 fd=359 name=WEBBY103 age=19963 idle=34 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:31727 fd=68 name=WEBAPI202 age=104683 idle=32 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:50506 fd=265 name=WEBAPI201 age=70765 idle=13 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:16535 fd=77 name=WEB503 age=15944 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:16536 fd=78 name=WEB503 age=15944 idle=16 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:62410 fd=260 name=WEB108 age=49420 idle=38 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:62411 fd=271 name=WEB108 age=49420 idle=38 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:50507 fd=266 name=WEBAPI201 age=70765 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:19950 fd=330 name=WEBBY201 age=125785 idle=35 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:14276 fd=181 name=WEBBY104 age=19956 idle=22 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:14277 fd=360 name=WEBBY104 age=19956 idle=22 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:61586 fd=113 name=WEB307 age=50876 idle=18 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:61587 fd=114 name=WEB307 age=50876 idle=18 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:19951 fd=333 name=WEBBY201 age=125785 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:60509 fd=238 name=WEB702 age=52769 idle=37 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:60510 fd=239 name=WEB702 age=52769 idle=37 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:3171 fd=20 name=WEB605 age=273108 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:35871 fd=16 name=WEBKZ203 age=446740 idle=5 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:3464 fd=5 name=WEB601 age=272596 idle=17 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:3465 fd=83 name=WEB601 age=272596 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:53131 fd=99 name=WEB01 age=66055 idle=38 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:53132 fd=100 name=WEB01 age=66055 idle=28 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:35876 fd=17 name=WEBKZ201 age=446735 idle=1 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=set
+addr=127.0.0.1:60500 fd=14 name=WEB704 age=52773 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:35877 fd=18 name=WEBKZ201 age=446735 idle=24 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:21954 fd=168 name=WEB506 age=471231 idle=12 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:21848 fd=70 name=WEB03 age=471232 idle=2 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:21849 fd=71 name=WEB03 age=471232 idle=33 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:54027 fd=199 name=WEB705 age=64481 idle=14 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11804 fd=315 name=WEB807 age=24314 idle=19 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:15535 fd=356 name=WEB801 age=17754 idle=8 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:15536 fd=357 name=WEB801 age=17754 idle=8 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:11805 fd=318 name=WEB807 age=24314 idle=19 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+addr=127.0.0.1:54028 fd=200 name=WEB705 age=64481 idle=14 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:54023 fd=198 name=WEB705 age=64484 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
+addr=127.0.0.1:62401 fd=195 name=WEB105 age=49425 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+addr=127.0.0.1:62402 fd=202 name=WEB105 age=49425 idle=14 flags=N db=0 sub=1 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=unsubscribe
+addr=127.0.0.1:3017 fd=64 name=WEB505 age=273345 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=evalsha
+
+[53329] 27 Aug 22:41:55.898 # --- CURRENT CLIENT INFO
+[53329] 27 Aug 22:41:55.898 # client: addr=127.0.0.1:11239 fd=293 name=WEB401 age=25241 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=evalsha
+[53329] 27 Aug 22:41:55.898 # argv[0]: 'EVALSHA'
+[53329] 27 Aug 22:41:55.898 # argv[1]: 'b24bf4e2b5aa97c2422977edea027a8c1c26f566'
+[53329] 27 Aug 22:41:55.898 # argv[2]: '2'
+[53329] 27 Aug 22:41:55.898 # argv[3]: 'users:0:favbrands'
+[53329] 27 Aug 22:41:55.898 # argv[4]: 'brands:4723:votes'
+[53329] 27 Aug 22:41:55.898 # argv[5]: '4723'
+[53329] 27 Aug 22:41:55.898 # --- REGISTERS
+[53329] 27 Aug 22:41:55.898 #   Dumping of registers not supported for this OS/arch
+[53329] 27 Aug 22:41:55.898 # 
+=== REDIS BUG REPORT END. Make sure to include from START to END. ===
+
+       Please report the crash opening an issue on github:
+
+           http://github.com/antirez/redis/issues
+
+  Suspect RAM error? Use redis-server --test-memory to verify it.
+
+
+[73049] 27 Aug 22:42:27.135 * DB saved on disk

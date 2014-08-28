@@ -1,0 +1,85 @@
+# Server
+redis_version:2.8.9
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_build_id:dc40148925c52404
+redis_mode:standalone
+os:Linux 3.2.0-60-virtual x86_64
+arch_bits:64
+multiplexing_api:epoll
+gcc_version:4.6.3
+process_id:8689
+run_id:04d0d01ba0d714c9faf35a459c1330c9f0e8e640
+tcp_port:6379
+uptime_in_seconds:8230579
+uptime_in_days:95
+hz:10
+lru_clock:16679040
+config_file:/etc/redis/redis.conf
+
+# Clients
+connected_clients:69
+client_longest_output_list:0
+client_biggest_input_buf:0
+blocked_clients:0
+
+# Memory
+used_memory:16569859592
+used_memory_human:15.43G
+used_memory_rss:24203051008
+used_memory_peak:36273014696
+used_memory_peak_human:33.78G
+used_memory_lua:33792
+mem_fragmentation_ratio:1.46
+mem_allocator:jemalloc-3.6.0
+
+# Persistence
+loading:0
+rdb_changes_since_last_save:478071
+rdb_bgsave_in_progress:0
+rdb_last_save_time:1409187934
+rdb_last_bgsave_status:ok
+rdb_last_bgsave_time_sec:116
+rdb_current_bgsave_time_sec:-1
+aof_enabled:0
+aof_rewrite_in_progress:0
+aof_rewrite_scheduled:0
+aof_last_rewrite_time_sec:-1
+aof_current_rewrite_time_sec:-1
+aof_last_bgrewrite_status:ok
+aof_last_write_status:ok
+
+# Stats
+total_connections_received:252705
+total_commands_processed:41074109711
+instantaneous_ops_per_sec:5758
+rejected_connections:0
+sync_full:43
+sync_partial_ok:0
+sync_partial_err:30
+expired_keys:47086190
+evicted_keys:0
+keyspace_hits:15700780061
+keyspace_misses:53863317
+pubsub_channels:0
+pubsub_patterns:0
+latest_fork_usec:443971
+
+# Replication
+role:master
+connected_slaves:1
+slave0:ip=******,port=6379,state=online,offset=817508928805,lag=1
+master_repl_offset:817514885064
+repl_backlog_active:1
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:817513836489
+repl_backlog_histlen:1048576
+
+# CPU
+used_cpu_sys:360460.03
+used_cpu_user:471925.22
+used_cpu_sys_children:182500.09
+used_cpu_user_children:5425494.00
+
+# Keyspace
+db0:keys=11691697,expires=11685022,avg_ttl=6766564835
