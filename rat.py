@@ -37,16 +37,16 @@ def parseInput(fd):
     # Skip over any non-INFO or non-report output at beginning of our input.
     startRegex = r"^(# |===)"
     if isinstance(fd, list):
+        prev = fd
         line = fd[0]
-        prev = fd[1:]
         while not re.match(startRegex, line):
             prev = fd
             fd = fd[1:]
             line = fd[0]
         fd = prev
     elif isinstance(fd, file):
-        line = fd.readline()
         prev = fd.tell()
+        line = fd.readline()
         while not re.match(startRegex, line):
             prev = fd.tell()
             line = fd.readline()
