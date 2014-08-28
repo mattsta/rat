@@ -7,7 +7,7 @@ def run(flat, sections, mode):
     if not sections['Persistence']:
         return
 
-    def toTimeAgo(sec):
+    def toTime(sec):
         def es(x):
             if x > 1 or x == 0:
                 return "s"
@@ -17,14 +17,17 @@ def run(flat, sections, mode):
         m, s = divmod(sec, 60)
         h, m = divmod(m, 60)
         if h:
-            hms = "%d hour%s, %d minute%s, %d second%s ago" % \
+            hms = "%d hour%s, %d minute%s, %d second%s" % \
                 (h, es(h), m, es(m), s, es(s))
         elif m:
-            hms = "%d minute%s, %d second%s ago" % (m, es(m), s, es(s))
+            hms = "%d minute%s, %d second%s" % (m, es(m), s, es(s))
         elif s:
-            hms = "%d second%s ago" % (s, es(s))
+            hms = "%d second%s" % (s, es(s))
 
         return hms
+
+    def toTimeAgo(sec):
+        return toTime(sec) + " ago"
 
     if changes:
         result['changes not written yet'] = "{:,d}".format(changes)
@@ -33,13 +36,13 @@ def run(flat, sections, mode):
         result['currently saving'] = True
         saveSec = flat['rdb_current_bgsave_time_sec']
         if saveSec:
-            result['current save duration'] = toTimeAgo(saveSec)
+            result['current save started'] = toTimeAgo(saveSec)
 
     if lastStatus != "ok":
         result['last save not ok'] = lastStatus
 
     if lastSaveDuration and lastSaveDuration != -1:
-        result['last save duration'] = toTimeAgo(lastSaveDuration)
+        result['last save duration'] = toTime(lastSaveDuration)
     elif lastSaveDuration == -1:
         result['never wrote snapshot'] = True
 
